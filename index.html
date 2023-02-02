@@ -65,7 +65,7 @@
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="Toggle navigation bar">
+      <div class="lines" aria-label="ナビゲーションバーの切り替え">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -129,11 +129,11 @@
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="Contents">
+      <div class="contents panel pjax" data-title="見出し">
       </div>
-      <div class="related panel pjax" data-title="Related">
+      <div class="related panel pjax" data-title="関連記事">
       </div>
-      <div class="overview panel" data-title="Overview">
+      <div class="overview panel" data-title="概要">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="John Doe"
       data-src="/images/avatar.jpg">
@@ -151,27 +151,27 @@
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
   </li>
 
         
   <li class="item dropdown">
-      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>投稿</a>
     <ul class="submenu">
 
         
   <li class="item">
-    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a>
   </li>
 
         
   <li class="item">
-    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a>
   </li>
 
         
   <li class="item">
-    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a>
   </li>
 
   </ul>
@@ -202,12 +202,12 @@
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>Random Posts</h2>
+  <h2>ランダムな記事</h2>
   <ul>
   </ul>
 </div>
 <div>
-  <h2>Recent Comments</h2>
+  <h2>最近のコメント</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -234,16 +234,16 @@
   var LOCAL = {
     path: '',
     favicon: {
-      show: "（●´3｀●）Goooood",
-      hide: "(´Д｀)Booooom"
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
     },
     search : {
-      placeholder: "Search for Posts",
-      empty: "We didn't find any results for the search: ${query}",
-      stats: "${hits} results found in ${time} ms"
+      placeholder: "検索…",
+      empty: "「 ${query} 」については何も見つかりませんでした",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
     },
     valine: true,fancybox: true,
-    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
     ignores : [
       function(uri) {
         return uri.includes('#');
