@@ -1,0 +1,448 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/">
+
+
+
+  <title>
+中间件技术 - .NET CORE |
+Welcom To Study ! = Hexo</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">中间件技术
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="作成日：2023-02-03 09:22:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">投稿日</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-03T09:22:32+08:00">2023-02-03</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="ナビゲーションバーの切り替え">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Welcom To Study !</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://img-qn-4.51miz.com/preview/element/00/01/13/23/E-1132369-BDDC202B.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fh/320">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">ホーム</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/NET-CORE/" itemprop="item" rel="index" title="カテゴリ .NET CORE"><span itemprop="name">.NET CORE</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="中间件"><a class="markdownIt-Anchor" href="#中间件">#</a> 中间件</h1>
+<p>中间件是一种装配到应用管道以处理请求和响应的软件。</p>
+<p><img data-src="https://img2022.cnblogs.com/blog/1755789/202204/1755789-20220415203942304-87231301.png" alt="img"></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> Microsoft.AspNetCore.Http;</span><br><span class="line"><span class="keyword">using</span> Microsoft.AspNetCore.Http.Features;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Extensions.Internal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Microsoft.AspNetCore.Builder</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ApplicationBuilder</span> : <span class="title">IApplicationBuilder</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">string</span> ServerFeaturesKey = <span class="string">&quot;server.Features&quot;</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">string</span> ApplicationServicesKey = <span class="string">&quot;application.Services&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IList&lt;Func&lt;RequestDelegate, RequestDelegate&gt;&gt; _components = <span class="keyword">new</span> List&lt;Func&lt;RequestDelegate, RequestDelegate&gt;&gt;(); <span class="comment">//存放中间件的列表</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ApplicationBuilder</span>(<span class="params">IServiceProvider serviceProvider</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Properties = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(StringComparer.Ordinal);</span><br><span class="line">            ApplicationServices = serviceProvider;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ApplicationBuilder</span>(<span class="params">IServiceProvider serviceProvider, <span class="built_in">object</span> server</span>)</span></span><br><span class="line"><span class="function">            : <span class="title">this</span>(<span class="params">serviceProvider</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            SetProperty(ServerFeaturesKey, server);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">ApplicationBuilder</span>(<span class="params">ApplicationBuilder builder</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Properties = <span class="keyword">new</span> CopyOnWriteDictionary&lt;<span class="built_in">string</span>, <span class="built_in">object</span>&gt;(builder.Properties, StringComparer.Ordinal);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> IServiceProvider ApplicationServices</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> GetProperty&lt;IServiceProvider&gt;(ApplicationServicesKey);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">set</span></span><br><span class="line">            &#123;</span><br><span class="line">                SetProperty&lt;IServiceProvider&gt;(ApplicationServicesKey, <span class="keyword">value</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> IFeatureCollection ServerFeatures</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> GetProperty&lt;IFeatureCollection&gt;(ServerFeaturesKey);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">IDictionary</span>&lt;<span class="title">string</span>, <span class="title">object</span>&gt; Properties</span> &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> T <span class="title">GetProperty</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> key</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">object</span> <span class="keyword">value</span>;</span><br><span class="line">            <span class="keyword">return</span> Properties.TryGetValue(key, <span class="keyword">out</span> <span class="keyword">value</span>) ? (T)<span class="keyword">value</span> : <span class="literal">default</span>(T);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">SetProperty</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> key, T <span class="keyword">value</span></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Properties[key] = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//app.use()方法。其实就是把这个中间件放在列表里</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> IApplicationBuilder <span class="title">Use</span>(<span class="params">Func&lt;RequestDelegate, RequestDelegate&gt; middleware</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            _components.Add(middleware);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> IApplicationBuilder <span class="title">New</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ApplicationBuilder(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//构建Http请求处理管道，</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> RequestDelegate <span class="title">Build</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            RequestDelegate app = context =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// If we reach the end of the pipeline, but we have an endpoint, then something unexpected has happened.</span></span><br><span class="line">                <span class="comment">// This could happen if user code sets an endpoint, but they forgot to add the UseEndpoint middleware.</span></span><br><span class="line">                <span class="keyword">var</span> endpoint = context.GetEndpoint();</span><br><span class="line">                <span class="keyword">var</span> endpointRequestDelegate = endpoint?.RequestDelegate;</span><br><span class="line">                <span class="keyword">if</span> (endpointRequestDelegate != <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">var</span> message =</span><br><span class="line">                        <span class="string">$&quot;The request reached the end of the pipeline without executing the endpoint: &#x27;<span class="subst">&#123;endpoint.DisplayName&#125;</span>&#x27;. &quot;</span> +</span><br><span class="line">                        <span class="string">$&quot;Please register the EndpointMiddleware using &#x27;<span class="subst">&#123;<span class="keyword">nameof</span>(IApplicationBuilder)&#125;</span>.UseEndpoints(...)&#x27; if using &quot;</span> +</span><br><span class="line">                        <span class="string">$&quot;routing.&quot;</span>;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> InvalidOperationException(message);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                context.Response.StatusCode = <span class="number">404</span>;</span><br><span class="line">                <span class="keyword">return</span> Task.CompletedTask;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> component <span class="keyword">in</span> _components.Reverse()) <span class="comment">//列表翻转一下在执行里面的中间件</span></span><br><span class="line">            &#123;</span><br><span class="line">                app = component(app);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> app;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>着重看 build 方法</p>
+<ol>
+<li>首先它是将 <strong>_components</strong> 这个集合反转（即：<strong>_components.Reverse()</strong>），然后依次调用里面的中间件（Func&lt;RequestDelegate, RequestDelegate&gt; 委托），这也就解释了为什么网站启动时我们的控制台会依次输出 “middleware 3” 、“middleware 2”、“middleware 1” 的原因。</li>
+<li>调用反转后的第一个中间件（即：注册的最后一个中间件）时传入的参数是状态码为 404 的 RequestDelegate 委托，作为默认处理步骤。</li>
+<li>在调用反转后的中间件时，<strong>它是用第一个中间件的返回值作为调用第二个中间件的参数，用第二个中间件的返回值作为调用第三个中间件的参数，依次类推。这也就是为什么说注册时的那个 next 参数是指向注册时下一个中间件的原因。</strong></li>
+<li>Build () 方法最终返回的是调用反转后最后一个中间件（即：注册的第一个中间件）的返回值。</li>
+</ol>
+<h3 id="使用中间件"><a class="markdownIt-Anchor" href="#使用中间件">#</a> 使用中间件</h3>
+<p>创建文件的时候选择中间件，重写里面的 InvokeAsync 方法</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CustomMiddleware</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 保存下一个中间件</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> RequestDelegate _next;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 构造函数</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;next&quot;&gt;</span>下一个中间件<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomMiddleware</span>(<span class="params">RequestDelegate next</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;<span class="keyword">typeof</span>(CustomMiddleware)&#125;</span> 被构造&quot;</span>);</span><br><span class="line">        _next = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 中间件方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">InvokeAsync</span>(<span class="params">HttpContext context</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> Task.Run(() =&gt; Console.WriteLine(<span class="string">$&quot;This is CustomMiddleware Start&quot;</span>));</span><br><span class="line">        <span class="keyword">await</span> _next.Invoke(context); <span class="comment">//可通过不调用 next 参数使请求管道短路</span></span><br><span class="line">        <span class="keyword">await</span> Task.Run(() =&gt; Console.WriteLine(<span class="string">$&quot;This is CustomMiddleware End&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//之后在programs.cs里配置</span></span><br><span class="line">app.UseMiddleware&lt;CustomMiddleware&gt;();</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img2022.cnblogs.com/blog/1755789/202206/1755789-20220626215436761-926695368.png" alt="img"></p>
+<p><img data-src="https://img2022.cnblogs.com/blog/1755789/202206/1755789-20220626215744446-159704377.png" alt="img"></p>
+<h3 id="注意点"><a class="markdownIt-Anchor" href="#注意点">#</a> 注意点：</h3>
+<p>关于自定义中间件的方法：</p>
+<ol>
+<li>中间件的方法名必须叫 Invoke 或者 InvokeAsync ，且为 public ，非 static 。</li>
+<li>Invoke 或者 InvokeAsync 方法第一个参数必须是 HttpContext 类型。</li>
+<li>Invoke 或者 InvokeAsync 方法的返回值类型必须是 Task 。</li>
+<li>Invoke 或者 InvokeAsync 方法可以有多个参数，除 HttpContext 外其它参数会尝试从依赖注入容器中获取。</li>
+<li>Invoke 或者 InvokeAsync 方法不能有重载。</li>
+</ol>
+<p>关于自定义中间件的构造函数：</p>
+<ol>
+<li>构造函数必须包含 RequestDelegate 参数，该参数传入的是下一个中间件。</li>
+<li>构造函数参数中的 RequestDelegate 参数不是必须放在第一个，可以是任意位置。</li>
+<li>构造函数可以有多个参数，参数会优先从给定的参数列表中查找，其次会从依赖注入容器中获取，获取失败会尝试获取默认值，都失败则会抛出异常。</li>
+<li>构造函数可以有多个，届时会根据构造函数参数列表和给定的参数列表选择匹配度最高的一个。</li>
+</ol>
+<p>个人建议：</p>
+<ol>
+<li>除极特殊情况外只保留一个构造函数，以省去多余的构造函数匹配检查。</li>
+<li>在构造函数中注入所需依赖而不是在 Invoke 或者 InvokeAsync 方法中注入。</li>
+<li>关于构造函数参数的顺序，把 RequestDelegate 放在第一个；之后是 UseMiddleware 方法中给出的参数，而且构造函数中参数顺序和给定参数列表中的顺序最好也相同；然后是需要注入的参数；最后是有默认值的参数。以上除了默认值参数必须放在最后外其余的顺序都不是必须的，但按照上面的顺序会比较清晰，而且能使实例创建的开销最小。</li>
+<li>Invoke 或者 InvokeAsync 方法只保留一个 HttpContext 参数，这样可以省去对 Invoke 或者 InvokeAsync 方法的二次包装。</li>
+</ol>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">編集日</span>
+    <time title="修正日：2023-02-03 10:14:27" itemprop="dateModified" datetime="2023-02-03T10:14:27+08:00">2023-02-03</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 寄付</button>
+  <p>*~(￣▽￣)~[お茶]を一杯ください</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat 支払う">
+        <p>WeChat 支払う</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者： </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>記事へのリンク：</strong>
+    <a href="http://example.com/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">http://example.com/2023/02/03/中间件技术/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;ts2.cn.mm.bing.net&#x2F;th?id&#x3D;OIP-C.e-xYu--RLsy5-wRVGKDpfQHaEo&amp;w&#x3D;316&amp;h&#x3D;197&amp;c&#x3D;8&amp;rs&#x3D;1&amp;qlt&#x3D;90&amp;o&#x3D;6&amp;dpr&#x3D;1.3&amp;pid&#x3D;3.1&amp;rm&#x3D;2" title=".NET管道模型">
+  <span class="type">前の記事</span>
+  <span class="category"><i class="ic i-flag"></i> .NET CORE</span>
+  <h3>.NET管道模型</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="見出し">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> 中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 使用中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 注意点：</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="関連記事">
+        <ul>
+          <li><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" rel="bookmark" title=".NET管道模型">.NET管道模型</a></li><li class="active"><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" rel="bookmark" title="中间件技术">中间件技术</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">2</span>
+        <span class="name">ポスト</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">1</span>
+        <span class="name">カテゴリ</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>投稿</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>ランダムな記事</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最近のコメント</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Welcom To Study !</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/02/03/中间件技术/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "検索…",
+      empty: "「 ${query} 」については何も見つかりませんでした",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,
+    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
