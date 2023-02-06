@@ -1,0 +1,515 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+
+
+  <title>
+常用的几种设计模式 - 设计模式 |
+Welcom To Study ! = Hexo</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">常用的几种设计模式
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 16:12:28">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T16:12:28+08:00">2023-02-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Welcom To Study !</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.96f91d3xJZ21llZ84hc9PgHaEL?w=317&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="item" rel="index" title="In 设计模式"><span itemprop="name">设计模式</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="常用设计模式"><a class="markdownIt-Anchor" href="#常用设计模式">#</a> 常用设计模式</h1>
+<h2 id="1-单例模式"><a class="markdownIt-Anchor" href="#1-单例模式">#</a> 1、单例模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SingleTon</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingleTon</span>()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleTon _singleton;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">object</span> _lock = <span class="keyword">new</span> <span class="built_in">object</span>();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> SingleTon <span class="title">GetInstance</span>()</span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(<span class="keyword">this</span>._singleton == <span class="literal">null</span>)&#123;</span><br><span class="line">        	<span class="keyword">lock</span>(_lock)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">this</span>._singleton == <span class="literal">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">this</span>._singleton = <span class="keyword">new</span> SingleTon();</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">this</span>._singleton;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    	&#125;   </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-建造者模式"><a class="markdownIt-Anchor" href="#2-建造者模式">#</a> 2、建造者模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> ID;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Test</span>()</span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Build</span>&#123;</span><br><span class="line">        Test _test = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">int</span> ID;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Build <span class="title">ID</span>(<span class="params"><span class="built_in">int</span> id</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.ID = id;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Build <span class="title">Name</span>(<span class="params"><span class="built_in">string</span> name</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.Name = name;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Test <span class="title">build</span>()</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(id == <span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IDIsNull();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Name == <span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> NameIsNull();</span><br><span class="line">            &#125;</span><br><span class="line">            _test.ID = ID;</span><br><span class="line">            _test.Name = Name;</span><br><span class="line">            <span class="keyword">return</span> _test;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-代理模式"><a class="markdownIt-Anchor" href="#3-代理模式">#</a> 3、代理模式</h2>
+<p>装饰器模式的关注点在于给对象动态添加方法，而动态代理更注重对象的访问控制</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> Phone&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">BuyPhone</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Apple</span>:<span class="title">Phone</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">override</span> <span class="title">BuyPhone</span>()</span>&#123;</span><br><span class="line">        Console.Write(<span class="string">&quot;买了个苹果&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProxyBuyer</span>: <span class="title">Phone</span>&#123;</span><br><span class="line">    Apple apple;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">override</span> <span class="title">BuyPhone</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(apple == <span class="literal">null</span>)&#123;</span><br><span class="line">            apple = <span class="keyword">new</span> Apple(); <span class="comment">//代理自己new</span></span><br><span class="line">        &#125;</span><br><span class="line">        apple.BuyPhone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Phone p = <span class="keyword">new</span> ProxyBuyer();<span class="comment">//代理Apple类</span></span><br><span class="line">p.BuyPhone();</span><br></pre></td></tr></table></figure>
+<h2 id="4-装饰者模式"><a class="markdownIt-Anchor" href="#4-装饰者模式">#</a> 4、装饰者模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> Component&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Show</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Concrete</span> :<span class="title">Component</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;</span><br><span class="line">        Console.Write(<span class="string">&quot;具体实施者&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Decorator</span> : <span class="title">Component</span>&#123;</span><br><span class="line">    Concrete _concrete;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Decorator</span>(<span class="params">Concrete concrete</span>)</span>&#123; <span class="comment">//装饰器由外部传入</span></span><br><span class="line">        <span class="keyword">this</span>._concrete = concrete;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;</span><br><span class="line">        _concrete.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DecoratorA</span> : <span class="title">Decorator</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DecoratorA</span>(<span class="params">Concrete concrete</span>):<span class="title">base</span>(<span class="params">concrete</span>)</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;</span><br><span class="line">        Console.Write(<span class="string">&quot;装饰一下&quot;</span>);</span><br><span class="line">        <span class="keyword">base</span>.show();</span><br><span class="line">        Console.Write(<span class="string">&quot;装饰一下&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">DecoratorA DA = <span class="keyword">new</span> DecoratorA(<span class="keyword">new</span> Concrete());</span><br><span class="line">DA.show();</span><br></pre></td></tr></table></figure>
+<h2 id="5-观察者模式"><a class="markdownIt-Anchor" href="#5-观察者模式">#</a> 5、观察者模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Subscriptor</span>&#123;</span><br><span class="line">    List&lt;IOberver&gt; observers = <span class="keyword">new</span> List&lt;IObserver&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddOvserver</span>(<span class="params">IObserver observer</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.observers.Add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RemoveObserer</span>(<span class="params">IObserver observer</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.observers.Remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="keyword">var</span> item <span class="keyword">in</span> observers)&#123;</span><br><span class="line">            item.show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IObserver</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ObserverA</span>:<span class="title">IObserver</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ObserverB</span>:<span class="title">IObserver</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">Subscriptor S = <span class="keyword">new</span> Subscriptor();</span><br><span class="line">s.AddOvserver(<span class="keyword">new</span> ObserverA());</span><br><span class="line">s.AddOvserver(<span class="keyword">new</span> ObserverB());</span><br><span class="line">S.Update();</span><br></pre></td></tr></table></figure>
+<h2 id="6-简单工厂模式"><a class="markdownIt-Anchor" href="#6-简单工厂模式">#</a> 6、简单工厂模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Food</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food1</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food2</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FoodFactory</span>&#123;</span><br><span class="line">    Food food1;</span><br><span class="line">    Food food2;</span><br><span class="line">    FoodFactory(<span class="built_in">string</span> type)&#123;</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="string">&quot;food1&quot;</span>)&#123;</span><br><span class="line">            food1 = <span class="keyword">new</span> Food1();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="string">&quot;food2&quot;</span>)&#123;</span><br><span class="line">            food2 = <span class="keyword">new</span> Food2();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Food <span class="title">GetFoodInstance</span>(<span class="params"><span class="built_in">string</span> type</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="string">&quot;food1&quot;</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> food1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="string">&quot;food2&quot;</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> food2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-工厂方法模式"><a class="markdownIt-Anchor" href="#7-工厂方法模式">#</a> 7、工厂方法模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Food</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food1</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food2</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">FoodFactory</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Food <span class="title">Create</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food1Factory</span>:<span class="title">FoodFactory</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Food <span class="title">Create</span>()</span>&#123;</span><br><span class="line">        Food food1 = <span class="keyword">new</span> Food1();</span><br><span class="line">        <span class="keyword">return</span> food1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food2Factory</span>:<span class="title">FoodFactory</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Food <span class="title">Create</span>()</span>&#123;</span><br><span class="line">        Food food2 = <span class="keyword">new</span> Food2();</span><br><span class="line">        <span class="keyword">return</span> food2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">FoodFactory factory = <span class="keyword">new</span> Food1Factory();</span><br><span class="line">Food food = factory.Create();</span><br><span class="line">food.EatFoot();</span><br></pre></td></tr></table></figure>
+<h2 id="8-抽象工厂模式"><a class="markdownIt-Anchor" href="#8-抽象工厂模式">#</a> 8、抽象工厂模式</h2>
+<p>工厂可以不只生产一种产品了</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Food</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food1</span>：<span class="title">Food</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Food2</span>：<span class="title">Food</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatFoot</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Drink</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">EatDrink</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Drink1</span>：<span class="title">Drink</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatDrink</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Drink2</span>：<span class="title">Drink</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">EatDrink</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Factory</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Food <span class="title">FoodCreate</span>()</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Drink <span class="title">DrinkCreate</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Factory1</span>:<span class="title">Factory</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Food <span class="title">FoodCreate</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Food1();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Drink <span class="title">DrinkCreate</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Drink1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Factory2</span>:<span class="title">Factory</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Food <span class="title">FoodCreate</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Food2();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Drink <span class="title">DrinkCreate</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Drink2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-原型模式"><a class="markdownIt-Anchor" href="#9-原型模式">#</a> 9、原型模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Prototype</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> _id&#123;GET;SET;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Prototype</span>(<span class="params"><span class="built_in">int</span> id</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>._id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Prototype <span class="title">Clone</span>()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConcreteClass</span>:<span class="title">Prototype</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteClass</span>(<span class="params"><span class="built_in">int</span> id</span>):<span class="title">base</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Prototype <span class="title">Clone</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Prototype)<span class="keyword">this</span>.MemberwiseClone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="10-适配器模式"><a class="markdownIt-Anchor" href="#10-适配器模式">#</a> 10、适配器模式</h2>
+<p>让 Target 可以调用被适配的类的方法</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Target</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Adaptee</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span>()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Adapter</span>:<span class="title">Target</span>&#123;</span><br><span class="line">    Adaptee adaptee = <span class="keyword">new</span> Adaptee();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">show</span>()</span>&#123;</span><br><span class="line">        adaptee.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Target target = <span class="keyword">new</span>  Adapter();</span><br><span class="line">target.show();</span><br></pre></td></tr></table></figure>
+<h2 id="11-模板方法模式"><a class="markdownIt-Anchor" href="#11-模板方法模式">#</a> 11、模板方法模式</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">AbstractClass</span> &#123;</span><br><span class="line">    <span class="comment">// 共同的且繁琐的操作</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">baseOperation</span>()</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 由子类定制的操作</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">customOperation</span>()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模板方法定义的框架</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> final <span class="keyword">void</span> <span class="title">templateMethod</span>()</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 调用基本方法，完成固定逻辑</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        baseOperation();</span><br><span class="line">        customOperation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConcreteClass1</span> : <span class="title">AbstractClass</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Override <span class="keyword">void</span> <span class="title">customOperation</span>()</span> &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;具体模板1：customOperation()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConcreteClass2</span> : <span class="title">AbstractClass</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Override <span class="keyword">void</span> <span class="title">customOperation</span>()</span> &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;具体模板2：customOperation()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TemplateClient</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        AbstractClass abstractClass1 = <span class="keyword">new</span> ConcreteClass1();</span><br><span class="line">        AbstractClass abstractClass2 = <span class="keyword">new</span> ConcreteClass2();</span><br><span class="line">        applyTemplate(abstractClass1);</span><br><span class="line">        applyTemplate(abstractClass2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">applyTemplate</span>(<span class="params">AbstractClass abstractClass</span>)</span>&#123;</span><br><span class="line">        abstractClass.templateMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-02-06 16:14:24" itemprop="dateModified" datetime="2023-02-06T16:14:24+08:00">2023-02-06</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">http://example.com/2023/02/06/常用的几种设计模式/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tse4-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.a0tTRhsdjn3O9p1ZBhljeQHaEK?w&#x3D;312&amp;h&#x3D;180&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="事务与锁">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> SqlServer</span>
+  <h3>事务与锁</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text"> 常用设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、建造者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 3、代理模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text"> 4、装饰者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text"> 5、观察者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text"> 6、简单工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.</span> <span class="toc-text"> 7、工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.8.</span> <span class="toc-text"> 8、抽象工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.9.</span> <span class="toc-text"> 9、原型模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.10.</span> <span class="toc-text"> 10、适配器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.11.</span> <span class="toc-text"> 11、模板方法模式</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="bookmark" title="常用的几种设计模式">常用的几种设计模式</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">20</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" title="依赖注入">依赖注入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/AOP%E4%BD%BF%E7%94%A8/" title="AOP使用">AOP使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" title="事务与锁">事务与锁</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="In C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">属性双向绑定</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E8%BF%87%E6%BB%A4%E5%99%A8/" title="过滤器">过滤器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/NLOG/" title="NLOG">NLOG</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" title="HttpClient交互">HttpClient交互</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" title="Quartz后台处理的任务">Quartz后台处理的任务</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Welcom To Study !</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/02/06/常用的几种设计模式/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

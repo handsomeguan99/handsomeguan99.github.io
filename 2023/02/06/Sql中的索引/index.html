@@ -1,0 +1,534 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/">
+
+
+
+  <title>
+Sql中的索引 - SqlServer |
+Welcom To Study ! = Hexo</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Sql中的索引
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 15:47:16">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T15:47:16+08:00">2023-02-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Welcom To Study !</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://images6.alphacoders.com/740/thumbbig-740275.webp">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/SqlServer/" itemprop="item" rel="index" title="In SqlServer"><span itemprop="name">SqlServer</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="sql的索引"><a class="markdownIt-Anchor" href="#sql的索引">#</a> SQL 的索引</h1>
+<p>sqlserver 索引使用的是 B + 数作为索引的数据结构。</p>
+<p>B + 树结构：<img data-src="https://img-blog.csdnimg.cn/img_convert/67b6a0a1e0a1d922ce6d74f6c7fc6c88.webp?x-oss-process=image/format,png" alt="img"></p>
+<p>可见 B + 树叶子节点会存储所有的数据，其他节点都是卫星数据，帮助定位到想要的叶子节点。叶子节点有序并且有指针指向下一个叶子节点。</p>
+<h3 id="b树的优势"><a class="markdownIt-Anchor" href="#b树的优势">#</a> B + 树的优势：</h3>
+<p>​		B + 树的层级可控，这样可以保证数据库和硬盘的 IO 操作可控。并且索引中的 B + 树的叶子节点个数正好是一次 IO 操作读到的数据的个数，即一 &quot;页&quot;。</p>
+<p>​		B + 树的叶子节点有序，并且有指针，方便范围查找。</p>
+<p>​		数据相同的情况下，B + 树更矮壮。</p>
+<p>其他数据结构问题：</p>
+<p>​		hashmap: 单条数据查询快速，但是无法满足范围查找。</p>
+<p>​		二叉树：容易退化成链表，那就是全表查找。</p>
+<p>​		红黑树：维护复杂，并且无法控制树的层数，数据量一大，增加读取磁盘的次数。</p>
+<p>​		B - 树：B - 树不光叶子节点存数据，卫星数据也存储数据，所以数据量 B + 树存储的更多。范围查询时需要多次读取磁盘。</p>
+<h3 id="sqlserver索引语法"><a class="markdownIt-Anchor" href="#sqlserver索引语法">#</a> SQLserver 索引语法：</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> index 索引名 <span class="keyword">on</span> 表名 (列名<span class="number">1</span>,列名<span class="number">2</span>)			创建</span><br><span class="line"><span class="keyword">drop</span> index index_name <span class="keyword">on</span> table_name ;			  删除</span><br></pre></td></tr></table></figure>
+<p>覆盖索引：查询遇到一个索引并且完全不需要引用数据表就得到了所需数据，那么这个索引就可以称为覆盖索引。覆盖索引对于减少查询的逻辑读是一种有用的技术。即索引中就已经存在要查的数据了，就不用回表了。</p>
+<p>交叉索引：一个表有多个索引，那么 SQL Server 可以使用多个索引来执行一个查询。使用一个索引后，如果还可以使用索引，那会使用索引，不用全表搜索第一步的虚拟表。</p>
+<h3 id="注意点几种不会使用到索引的情况"><a class="markdownIt-Anchor" href="#注意点几种不会使用到索引的情况">#</a> <strong>注意点</strong>：<strong>几种不会使用到索引的情况</strong></h3>
+<p>1、or 语句：select * from table_name where key1=‘a’ or key2=‘b’ 。</p>
+<p>​		如果 or 前面的列有索引，后面的列没有设置，那么这条语句都不会走索引。</p>
+<p>2、like‘%' 开始的：select * from table_name where key1 like ‘% a’</p>
+<p>​		这种怎么都不会走索引。</p>
+<p>3、复合索引：复合索引为 (key1,key2), 查询 select * from table_name where key2=‘b’;</p>
+<p>​		不符合最左原则，也不会走索引。</p>
+<p>4、值为字符串的列，查询语句中不加引号表示是字符串，也不会走索引。</p>
+<p>​		select * from table_name where key1=1; 如果 key1 列保存的是字符串，即使 key1 上有索引，也不会被使用。</p>
+<p>5、前面是范围查找，and 后的就只在 B + 树的链表里做遍历</p>
+<h3 id="不需要索引的情况"><a class="markdownIt-Anchor" href="#不需要索引的情况">#</a> 不需要索引的情况</h3>
+<ul>
+<li>where 语句里用不到的列</li>
+<li>数据量较少不需要，直接全表搜索更快</li>
+<li>大量重复数据的列不用索引，例如性别</li>
+<li>主键不建议使用无序的值做索引</li>
+<li>经常更新的表或字段建过多的索引</li>
+</ul>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-02-06 16:08:36" itemprop="dateModified" datetime="2023-02-06T16:08:36+08:00">2023-02-06</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">http://example.com/2023/02/06/Sql中的索引/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;images8.alphacoders.com&#x2F;765&#x2F;thumbbig-765058.webp" title="SQL基本使用">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> SqlServer</span>
+  <h3>SQL基本使用</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tse4-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.a0tTRhsdjn3O9p1ZBhljeQHaEK?w&#x3D;312&amp;h&#x3D;180&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="事务与锁">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> SqlServer</span>
+  <h3>事务与锁</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sql%E7%9A%84%E7%B4%A2%E5%BC%95"><span class="toc-number">1.</span> <span class="toc-text"> SQL 的索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E6%A0%91%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">1.0.1.</span> <span class="toc-text"> B + 树的优势：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlserver%E7%B4%A2%E5%BC%95%E8%AF%AD%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text"> SQLserver 索引语法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E5%87%A0%E7%A7%8D%E4%B8%8D%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%88%B0%E7%B4%A2%E5%BC%95%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 注意点：几种不会使用到索引的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E7%B4%A2%E5%BC%95%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 不需要索引的情况</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="bookmark" title="SQL基本使用">SQL基本使用</a></li><li class="active"><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" rel="bookmark" title="Sql中的索引">Sql中的索引</a></li><li><a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" rel="bookmark" title="事务与锁">事务与锁</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">20</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" title="事务与锁">事务与锁</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/NLOG/" title="NLOG">NLOG</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" title="依赖注入">依赖注入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" title="Quartz后台处理的任务">Quartz后台处理的任务</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" title="HttpClient交互">HttpClient交互</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/FluentValidation%E9%AA%8C%E8%AF%81/" title="FluentValidation验证">FluentValidation验证</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" title="配置文件使用">配置文件使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Welcom To Study !</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/02/06/Sql中的索引/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
