@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="http://example.com/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/">
+<link rel="canonical" href="http://example.com/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/">
 
 
 
   <title>
-Sql中的索引 - SqlServer |
+缓存一致性问题 - Redis |
 Welcom To Study ! = Hexo</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ Welcom To Study ! = Hexo</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">Sql中的索引
+  <h1 itemprop="name headline">缓存一致性问题
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2023-02-06 15:47:16">
+  <span class="item" title="Created: 2023-02-06 17:19:56">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-06T15:47:16+08:00">2023-02-06</time>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T17:19:56+08:00">2023-02-06</time>
   </span>
 </div>
 
@@ -99,7 +99,7 @@ Welcom To Study ! = Hexo</title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://images6.alphacoders.com/740/thumbbig-740275.webp">
+          <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.1W-Ztos_3FNhFR53DJPlSwHaEK?w=317&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
       </div>
     </header>
     <div id="waves">
@@ -124,12 +124,12 @@ Welcom To Study ! = Hexo</title>
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
 <span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/SqlServer/" itemprop="item" rel="index" title="In SqlServer"><span itemprop="name">SqlServer</span></a>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Redis/" itemprop="item" rel="index" title="In Redis"><span itemprop="name">Redis</span></a>
 <meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -144,41 +144,20 @@ Welcom To Study ! = Hexo</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="sql的索引"><a class="markdownIt-Anchor" href="#sql的索引">#</a> SQL 的索引</h1>
-<p>sqlserver 索引使用的是 B + 数作为索引的数据结构。</p>
-<p>B + 树结构：<img data-src="https://img-blog.csdnimg.cn/img_convert/67b6a0a1e0a1d922ce6d74f6c7fc6c88.webp?x-oss-process=image/format,png" alt="img"></p>
-<p>可见 B + 树叶子节点会存储所有的数据，其他节点都是卫星数据，帮助定位到想要的叶子节点。叶子节点有序并且有指针指向下一个叶子节点。</p>
-<h3 id="b树的优势"><a class="markdownIt-Anchor" href="#b树的优势">#</a> B + 树的优势：</h3>
-<p>​		B + 树的层级可控，这样可以保证数据库和硬盘的 IO 操作可控。并且索引中的 B + 树的叶子节点个数正好是一次 IO 操作读到的数据的个数，即一 &quot;页&quot;。</p>
-<p>​		B + 树的叶子节点有序，并且有指针，方便范围查找。</p>
-<p>​		数据相同的情况下，B + 树更矮壮。</p>
-<p>其他数据结构问题：</p>
-<p>​		hashmap: 单条数据查询快速，但是无法满足范围查找。</p>
-<p>​		二叉树：容易退化成链表，那就是全表查找。</p>
-<p>​		红黑树：维护复杂，并且无法控制树的层数，数据量一大，增加读取磁盘的次数。</p>
-<p>​		B - 树：B - 树不光叶子节点存数据，卫星数据也存储数据，所以数据量 B + 树存储的更多。范围查询时需要多次读取磁盘。</p>
-<h3 id="sqlserver索引语法"><a class="markdownIt-Anchor" href="#sqlserver索引语法">#</a> SQLserver 索引语法：</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> index 索引名 <span class="keyword">on</span> 表名 (列名<span class="number">1</span>,列名<span class="number">2</span>)			创建</span><br><span class="line"><span class="keyword">drop</span> index index_name <span class="keyword">on</span> table_name ;			  删除</span><br></pre></td></tr></table></figure>
-<p>覆盖索引：查询遇到一个索引并且完全不需要引用数据表就得到了所需数据，那么这个索引就可以称为覆盖索引。覆盖索引对于减少查询的逻辑读是一种有用的技术。即索引中就已经存在要查的数据了，就不用回表了。</p>
-<p>交叉索引：一个表有多个索引，那么 SQL Server 可以使用多个索引来执行一个查询。使用一个索引后，如果还可以使用索引，那会使用索引，不用全表搜索第一步的虚拟表。</p>
-<h3 id="注意点几种不会使用到索引的情况"><a class="markdownIt-Anchor" href="#注意点几种不会使用到索引的情况">#</a> <strong>注意点</strong>：<strong>几种不会使用到索引的情况</strong></h3>
-<p>1、or 语句：select * from table_name where key1=‘a’ or key2=‘b’ 。</p>
-<p>​		如果 or 前面的列有索引，后面的列没有设置，那么这条语句都不会走索引。</p>
-<p>2、like‘%' 开始的：select * from table_name where key1 like ‘% a’</p>
-<p>​		这种怎么都不会走索引。</p>
-<p>3、复合索引：复合索引为 (key1,key2), 查询 select * from table_name where key2=‘b’;</p>
-<p>​		不符合最左原则，也不会走索引。</p>
-<p>4、值为字符串的列，查询语句中不加引号表示是字符串，也不会走索引。</p>
-<p>​		select * from table_name where key1=1; 如果 key1 列保存的是字符串，即使 key1 上有索引，也不会被使用。</p>
-<p>5、前面是范围查找，and 后的就只在 B + 树的链表里做遍历</p>
-<h3 id="不需要索引的情况"><a class="markdownIt-Anchor" href="#不需要索引的情况">#</a> 不需要索引的情况</h3>
-<ul>
-<li>where 语句里用不到的列</li>
-<li>数据量较少不需要，直接全表搜索更快</li>
-<li>大量重复数据的列不用索引，例如性别</li>
-<li>主键不建议使用无序的值做索引</li>
-<li>经常更新的表或字段建过多的索引</li>
-</ul>
+    <h1 id="缓存一致性"><a class="markdownIt-Anchor" href="#缓存一致性">#</a> 缓存一致性</h1>
+<p>缓存一致性问题都是在程序在对数据库做出修改的情况下出现。</p>
+<h3 id="1先更新数据库在更新缓存"><a class="markdownIt-Anchor" href="#1先更新数据库在更新缓存">#</a> 1	先更新数据库在更新缓存</h3>
+<p>数据库更新完成后，再去更新缓存里的数据。这种情况在<strong>单线程操作</strong>里比较合适，但是如果有并发情况，A 线程去更新数据库，准备更新缓存，这时出现了 B 线程也要更新数据库和缓存，B 线程运行时间短，更新了数据库和缓存后，A 再更新缓存，这样就导致：缓存存的是 A 线程数据，但是数据库的是 B 线程数据。</p>
+<h3 id="2删除缓存后再更新数据库"><a class="markdownIt-Anchor" href="#2删除缓存后再更新数据库">#</a> 2	删除缓存后再更新数据库</h3>
+<p>先删除缓存，再更新数据库，并且不要主动更新缓存，等再次查询这个数据的时候存到缓存里。这种也适合<strong>在单线程下使用。</strong></p>
+<p>这种在并发情况下也会存在问题：A 线程删除了缓存后，还未更新入到数据库，出现 B 线程；B 线程运行时间短，先读缓存不存在，去读数据库，此时数据库是旧值，读完写到缓存里。A 线程继续执行更新操作，把新值写到数据库里。这时数据库里是 A 线程的值，缓存是 B 线程写的旧值。</p>
+<h3 id="3延迟双删"><a class="markdownIt-Anchor" href="#3延迟双删">#</a> 3	延迟双删</h3>
+<p>在 6.2 的基础上加个延时。也就是，先删除缓存，再去更新数据库，延迟一段时间后再删除一次缓存。这样上面 B 线程执行后写的缓存值就被删除了。常用在没有主从的缓存中间件里。</p>
+<p>问题：如果存在主从节点，因为主从节点是读写分离的，所以 A 线程先删除缓存后，写入新数值到数据库，再删除一次缓存，但从节点还没有来得及进行删除操作；B 线程出现，因为读写分离，B 先去读取从节点，有旧值就返回旧值，存到缓存里。这时缓存里是 B 的缓存，数据库里是 A 的值。不过可以通过修改延迟时间来解决，需要大量时间调试</p>
+<h3 id="4-使用消息队列"><a class="markdownIt-Anchor" href="#4-使用消息队列">#</a> 4 使用消息队列</h3>
+<p><img data-src="https://img-blog.csdnimg.cn/4705c53c85354b5d927e4df0a999480e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDA4NDM1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>先更新数据库，成功后往消息队列发消息，消费到消息后再删除缓存，借助消息队列的重试机制来实现，达到最终一致性的效果。一般用在不能容忍一点点不一致情况下</p>
+<p>问题：一定要保证消息的执行，如果消息队列出现问题也会出现不一致。</p>
 
   </div>
 
@@ -190,7 +169,7 @@ Welcom To Study ! = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2023-02-06 16:08:36" itemprop="dateModified" datetime="2023-02-06T16:08:36+08:00">2023-02-06</time>
+    <time title="Modified: 2023-02-06 17:21:29" itemprop="dateModified" datetime="2023-02-06T17:21:29+08:00">2023-02-06</time>
   </span>
 </div>
 
@@ -226,7 +205,7 @@ Welcom To Study ! = Hexo</title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="http://example.com/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">http://example.com/2023/02/06/Sql中的索引/</a>
+    <a href="http://example.com/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" title="缓存一致性问题">http://example.com/2023/02/06/缓存一致性问题/</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -245,20 +224,20 @@ Welcom To Study ! = Hexo</title>
     <div class="item left">
       
 
-  <a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;images8.alphacoders.com&#x2F;765&#x2F;thumbbig-765058.webp" title="SQL基本使用">
+  <a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tse2-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.RjjlIfKZ1l8T1r5eYDwnkQHaEK?w&#x3D;263&amp;h&#x3D;180&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="Redis的高可用方案">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> SqlServer</span>
-  <h3>SQL基本使用</h3>
+  <span class="category"><i class="ic i-flag"></i> Redis</span>
+  <h3>Redis的高可用方案</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tse4-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.a0tTRhsdjn3O9p1ZBhljeQHaEK?w&#x3D;312&amp;h&#x3D;180&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="事务与锁">
+  <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tse2-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.CMIo9PZ7CnFAZakRYoJc6AHaEK?w&#x3D;330&amp;h&#x3D;182&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="缓存穿透等问题">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> SqlServer</span>
-  <h3>事务与锁</h3>
+  <span class="category"><i class="ic i-flag"></i> Redis</span>
+  <h3>缓存穿透等问题</h3>
   </a>
 
     </div>
@@ -277,11 +256,11 @@ Welcom To Study ! = Hexo</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sql%E7%9A%84%E7%B4%A2%E5%BC%95"><span class="toc-number">1.</span> <span class="toc-text"> SQL 的索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E6%A0%91%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">1.0.1.</span> <span class="toc-text"> B + 树的优势：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlserver%E7%B4%A2%E5%BC%95%E8%AF%AD%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text"> SQLserver 索引语法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E5%87%A0%E7%A7%8D%E4%B8%8D%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%88%B0%E7%B4%A2%E5%BC%95%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 注意点：几种不会使用到索引的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E7%B4%A2%E5%BC%95%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 不需要索引的情况</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text"> 缓存一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%85%88%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9C%A8%E6%9B%B4%E6%96%B0%E7%BC%93%E5%AD%98"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 1	先更新数据库在更新缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E5%88%A0%E9%99%A4%E7%BC%93%E5%AD%98%E5%90%8E%E5%86%8D%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 2	删除缓存后再更新数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E5%BB%B6%E8%BF%9F%E5%8F%8C%E5%88%A0"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 3	延迟双删</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 4 使用消息队列</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="bookmark" title="SQL基本使用">SQL基本使用</a></li><li class="active"><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" rel="bookmark" title="Sql中的索引">Sql中的索引</a></li><li><a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" rel="bookmark" title="事务与锁">事务与锁</a></li>
+          <li><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="bookmark" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></li><li><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" rel="bookmark" title="Redis的两种持久化方案">Redis的两种持久化方案</a></li><li><a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" rel="bookmark" title="Redis的高可用方案">Redis的高可用方案</a></li><li class="active"><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" rel="bookmark" title="缓存一致性问题">缓存一致性问题</a></li><li><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" rel="bookmark" title="缓存穿透等问题">缓存穿透等问题</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -347,12 +326,12 @@ Welcom To Study ! = Hexo</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -377,7 +356,37 @@ Welcom To Study ! = Hexo</title>
 <a href="/categories/Redis/" title="In Redis">Redis</a>
 </div>
 
-    <span><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" title="Redis的两种持久化方案">Redis的两种持久化方案</a></span>
+    <span><a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" title="Redis的高可用方案">Redis的高可用方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="In C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="In Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="In Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" title="缓存一致性问题">缓存一致性问题</a></span>
   </li>
 
       
@@ -387,17 +396,7 @@ Welcom To Study ! = Hexo</title>
 <a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
+    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
   </li>
 
       
@@ -408,6 +407,26 @@ Welcom To Study ! = Hexo</title>
 </div>
 
     <span><a href="/2023/02/03/%E8%BF%87%E6%BB%A4%E5%99%A8/" title="过滤器">过滤器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">Sql中的索引</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
   </li>
 
       
@@ -427,47 +446,7 @@ Welcom To Study ! = Hexo</title>
 <a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" title="Quartz后台处理的任务">Quartz后台处理的任务</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
-</div>
-
-    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
     <span><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" title="HttpClient交互">HttpClient交互</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Redis/" title="In Redis">Redis</a>
-</div>
-
-    <span><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></span>
   </li>
 
   </ul>
@@ -498,7 +477,7 @@ Welcom To Study ! = Hexo</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2023/02/06/Sql中的索引/',
+    path: '2023/02/06/缓存一致性问题/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -117,6 +117,182 @@
   <div class="index wrap">
     <h2 class="divider">Post List</h2>
     <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" itemprop="url" title="缓存穿透等问题"><img data-src="https://tse2-mm.cn.bing.net/th/id/OIP-C.CMIo9PZ7CnFAZakRYoJc6AHaEK?w=330&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 17:20:09">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T17:20:09+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" itemprop="url" title="缓存穿透等问题">缓存穿透等问题</a></h3>
+    <div class="excerpt">
+        # 缓存穿透、缓存击穿、缓存雪崩
+# 缓存雪崩：
+当某一个时刻出现大规模的缓存失效的情况 **(宕机了、大量的数据的过期时间设为一样)，** 那么就会导致大量的请求直接打在数据库上面，导致数据库压力巨大，如果在高并发的情况下，可能瞬间就会导致数据库宕机。这时候如果运维马上又重启数据库，马上又会有新的流量把数据库打死。这就是缓存雪崩。
+解决：配置两个缓存，一个宕机了立马换另一个、过期时间不要设为一样的可以加个随机数
+# 缓存击穿
+缓存击穿是一个热点的 Key，有大并发集中对其进行访问，突然间这个 Key...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Redis/" itemprop="url" title="Redis"><i class="ic i-flag"></i>Redis</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" itemprop="url" title="缓存穿透等问题" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" itemprop="url" title="缓存一致性问题"><img data-src="https://tse1-mm.cn.bing.net/th/id/OIP-C.1W-Ztos_3FNhFR53DJPlSwHaEK?w=317&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 17:19:56">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T17:19:56+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" itemprop="url" title="缓存一致性问题">缓存一致性问题</a></h3>
+    <div class="excerpt">
+        # 缓存一致性
+缓存一致性问题都是在程序在对数据库做出修改的情况下出现。
+# 1	先更新数据库在更新缓存
+数据库更新完成后，再去更新缓存里的数据。这种情况在单线程操作里比较合适，但是如果有并发情况，A 线程去更新数据库，准备更新缓存，这时出现了 B 线程也要更新数据库和缓存，B 线程运行时间短，更新了数据库和缓存后，A 再更新缓存，这样就导致：缓存存的是 A 线程数据，但是数据库的是 B 线程数据。
+# 2	删除缓存后再更新数据库
+先删除缓存，再更新数据库，并且不要主动更新缓存，等再次查询这个数据的时候存到缓存里。这种也适合在单线程下使用。
+这种在并发情况下也会存在问题：A...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Redis/" itemprop="url" title="Redis"><i class="ic i-flag"></i>Redis</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" itemprop="url" title="缓存一致性问题" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" itemprop="url" title="Redis的高可用方案"><img data-src="https://tse2-mm.cn.bing.net/th/id/OIP-C.RjjlIfKZ1l8T1r5eYDwnkQHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 17:06:19">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T17:06:19+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" itemprop="url" title="Redis的高可用方案">Redis的高可用方案</a></h3>
+    <div class="excerpt">
+        # Redis 的高可用方案
+# 1、主从复制：
+原先只有一个节点时，一旦宕机了，缓存的数据就全部丢失。这时可以配置一个从节点，从主节点那里复制一份数据，宕机了可以从从节点里恢复数据。
+主从同步：当一个从数据库启动后，会向主数据库发送 PSYNC 命令。同时主数据库接收到 SYNC 命令后会开始在后台保存快照（即 RDB 持久化的过程），并将保存快照期间接收到的命令缓存起来。当快照完成后，Redis...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Redis/" itemprop="url" title="Redis"><i class="ic i-flag"></i>Redis</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" itemprop="url" title="Redis的高可用方案" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" itemprop="url" title="Redis的两种持久化方案"><img data-src="https://tse2-mm.cn.bing.net/th/id/OIP-C.G9t_kpuJsjzDRoGY6jd9nAHaDK?w=323&h=149&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 16:45:16">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T16:45:16+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" itemprop="url" title="Redis的两种持久化方案">Redis的两种持久化方案</a></h3>
+    <div class="excerpt">
+        # 两种持久化
+redis 是缓存数据库，所以数据需要持久化到硬盘上，才能断电不丢失。
+# RDB 方式：Redis 会自动将内存中的所有数据生成一份副本并存储在硬盘上
+Redis 会在以下几种情况下对数据进行快照：
+
+根据配置规则进行自动快照；
+用户执行 SAVE 或 BGSAVE 命令；
+执行 FLUSHALL 命令；
+执行复制（replication）时
+
+# 1、配置规则自动生成快照
+配置文件里配置：
+save 900 1					900s 内有 1 个 key 被修改了，就执行快照
+save 300 10
+save 60 10000
+# 2、用户执行 SAVE 或 BGSAVE...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Redis/" itemprop="url" title="Redis"><i class="ic i-flag"></i>Redis</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" itemprop="url" title="Redis的两种持久化方案" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="url" title="Redis的5种常用数据类型"><img data-src="https://tse4-mm.cn.bing.net/th/id/OIP-C.bJXd7xcXXN3ZetcseE7yRQHaDo?w=326&h=171&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 16:29:05">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T16:29:05+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="url" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></h3>
+    <div class="excerpt">
+        # Redis 的 5 中常用数据类型
+# string 型
+123456789101112set k vget k INCRBY k increment 			返回k+incrementINCR K							返回k + 1DECRBY k increment				返回k-incrementDECR K							返回k - 1APPEND key value				向键值的末尾追加value。如果键不存在则将该键的值设置为valueSTRLEN key						获取key的值的长度MSET key1 v1 key2 v2 key 3 v3	同时设置很多key与valSETNX...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Redis/" itemprop="url" title="Redis"><i class="ic i-flag"></i>Redis</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="url" title="Redis的5种常用数据类型" class="btn">more...</a>
+  </div>
+</article>
+
         
 <article class="item">
   <div class="cover">
@@ -282,176 +458,6 @@ B + 树结构：
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url" title="反射的使用"><img data-src="https://images7.alphacoders.com/737/thumbbig-737487.webp"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-06 11:00:28">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-06T11:00:28+08:00">2023-02-06</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url" title="反射的使用">反射的使用</a></h3>
-    <div class="excerpt">
-        #...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/C/" itemprop="url" title="C#"><i class="ic i-flag"></i>C#</a>
-      </span>
-    </div>
-    <a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url" title="反射的使用" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" itemprop="url" title="GC垃圾回收"><img data-src="https://images2.alphacoders.com/742/thumbbig-742320.webp"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-06 10:54:52">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-06T10:54:52+08:00">2023-02-06</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" itemprop="url" title="GC垃圾回收">GC垃圾回收</a></h3>
-    <div class="excerpt">
-        # GC 垃圾回收
-#...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/C/" itemprop="url" title="C#"><i class="ic i-flag"></i>C#</a>
-      </span>
-    </div>
-    <a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" itemprop="url" title="GC垃圾回收" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" itemprop="url" title="Quartz后台处理的任务"><img data-src="https://images6.alphacoders.com/744/thumbbig-744516.webp"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-06 09:57:35">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-06T09:57:35+08:00">2023-02-06</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" itemprop="url" title="Quartz后台处理的任务">Quartz后台处理的任务</a></h3>
-    <div class="excerpt">
-        # Quartz 后台处理
-后台处理：例如定时发送邮件通知、后台处理耗时的数据处理。
-# 为什么需要 Quartz.NET？与定时器的区别？
-
-计时器没有持久性机制。
-计时器的时间安排不灵活（只能设置开始时间和重复间隔，没有基于日期，一天中的时间等信息）。
-计时器不使用线程池（每个计时器一个线程，线程开销很大，影响内存消耗）
-计时器没有真正的管理方案 - 您必须编写自己的机制以能够按名称记住，组织和恢复任务等。
-
-# 使用
-negut 包 [Quartz]
-创建任务：继承 IJob 后，实现 Execute
-12345678910public class HelloQuartzJob :...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/NET-CORE/" itemprop="url" title=".NET CORE"><i class="ic i-flag"></i>.NET CORE</a>
-      </span>
-    </div>
-    <a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" itemprop="url" title="Quartz后台处理的任务" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" itemprop="url" title=".NET6的托管方法"><img data-src="https://images6.alphacoders.com/740/thumbbig-740296.webp"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-06 09:33:42">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-06T09:33:42+08:00">2023-02-06</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" itemprop="url" title=".NET6的托管方法">.NET6的托管方法</a></h3>
-    <div class="excerpt">
-        # .NET6 的托管方法 BackgroundService
-# 步骤：
-
-场景，代码运行在后台。比如服务器启动的时候在后台预先加载数据到缓存，每天凌晨 3 点把数据导出到备份数据库，每隔 5 秒钟在两张表之间同步一次数据。
-托管服务实现 IHostedService 接口，一般编写从 BackgroundService 继承的类。
-services.AddHostedService(); 注入服务
-重写 ExecuteAsync 方法，实现自己的后台功能。尽量使用 try-catch-finally 语句包裹，可以记录日志
-重写 Dispose ()，释放资源
-
-#...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/NET-CORE/" itemprop="url" title=".NET CORE"><i class="ic i-flag"></i>.NET CORE</a>
-      </span>
-    </div>
-    <a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" itemprop="url" title=".NET6的托管方法" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" itemprop="url" title="HttpClient交互"><img data-src="https://tse4-mm.cn.bing.net/th/id/OIP-C.RygxLT39iEYv39WCm0ZysQHaLG?w=182&h=273&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-03 17:38:30">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-03T17:38:30+08:00">2023-02-03</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" itemprop="url" title="HttpClient交互">HttpClient交互</a></h3>
-    <div class="excerpt">
-        # HttpClient 与 RestSharp 的使用
-# HttpClient
-HttpClient 提供的一些 API
-1234567891011121314151617GetAsync(String) 以异步操作将GET请求发送给指定的URIGetAsync(URI) 以异步操作将GET请求发送给指定的URIGetAsync(String, HttpCompletionOption) 以异步操作的HTTP完成选项发送GET请求到指定的URIGetAsync(String, CancellationToken) 以异步操作的取消标记发送GET请求到指定URIGetAsync(Uri,...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/NET-CORE/" itemprop="url" title=".NET CORE"><i class="ic i-flag"></i>.NET CORE</a>
-      </span>
-    </div>
-    <a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" itemprop="url" title="HttpClient交互" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -459,7 +465,7 @@ HttpClient 提供的一些 API
   
   <nav class="pagination">
     <div class="inner">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="ic i-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="ic i-angle-right" aria-label="Next page"></i></a>
     </div>
   </nav>
 
@@ -487,13 +493,13 @@ HttpClient 提供的一些 API
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">20</span>
+        <span class="count">25</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">4</span>
+        <span class="count">5</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -567,7 +573,37 @@ HttpClient 提供的一些 API
 <a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/03/MediatR%E4%BD%BF%E7%94%A8/" title="MediatR使用">MediatR使用</a></span>
+    <span><a href="/2023/02/03/NLOG/" title="NLOG">NLOG</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/FluentValidation%E9%AA%8C%E8%AF%81/" title="FluentValidation验证">FluentValidation验证</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/AOP%E4%BD%BF%E7%94%A8/" title="AOP使用">AOP使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
   </li>
 
       
@@ -584,10 +620,10 @@ HttpClient 提供的一些 API
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
 </div>
 
-    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
   </li>
 
       
@@ -604,10 +640,10 @@ HttpClient 提供的一些 API
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/C/" title="In C#">C#</a>
+<a href="/categories/Redis/" title="In Redis">Redis</a>
 </div>
 
-    <span><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">属性双向绑定</a></span>
+    <span><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" title="缓存穿透等问题">缓存穿透等问题</a></span>
   </li>
 
       
@@ -617,27 +653,7 @@ HttpClient 提供的一些 API
 <a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/03/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" title="依赖注入">依赖注入</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/03/NLOG/" title="NLOG">NLOG</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+    <span><a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" title="Quartz后台处理的任务">Quartz后台处理的任务</a></span>
   </li>
 
       
@@ -648,16 +664,6 @@ HttpClient 提供的一些 API
 </div>
 
     <span><a href="/2023/02/03/%E8%BF%87%E6%BB%A4%E5%99%A8/" title="过滤器">过滤器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
-</div>
-
-    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
   </li>
 
   </ul>

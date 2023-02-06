@@ -1,0 +1,539 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/">
+
+
+
+  <title>
+Redis的高可用方案 - Redis |
+Welcom To Study ! = Hexo</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Redis的高可用方案
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 17:06:19">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T17:06:19+08:00">2023-02-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Welcom To Study !</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.RjjlIfKZ1l8T1r5eYDwnkQHaEK?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Redis/" itemprop="item" rel="index" title="In Redis"><span itemprop="name">Redis</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="redis的高可用方案"><a class="markdownIt-Anchor" href="#redis的高可用方案">#</a> Redis 的高可用方案</h1>
+<h3 id="1-主从复制"><a class="markdownIt-Anchor" href="#1-主从复制">#</a> 1、主从复制：</h3>
+<p>原先只有一个节点时，一旦宕机了，缓存的数据就全部丢失。这时可以配置一个从节点，从主节点那里复制一份数据，宕机了可以从从节点里恢复数据。</p>
+<p>主从同步：当一个从数据库启动后，会向主数据库发送 PSYNC 命令。同时主数据库接收到 SYNC 命令后会开始在后台保存快照（即 RDB 持久化的过程），并将保存快照期间接收到的命令缓存起来。当快照完成后，Redis 会将快照文件和所有缓存的命令发送给从数据库。从数据库收到后，会载入快照文件并执行收到的缓存的命令。以上过程称为复制初始化。主数据库每当收到写命令时就会将命令同步给从数据库，从而保证主从数据库数据一致。</p>
+<p>全量复制与增量复制：</p>
+<p>全量复制：上面从节点发送 PSYNC 给主节点获取全部数据就是全量复制。缺点就是不可以经常使用，耗时。</p>
+<p>增量复制：一般都是在主从断线后恢复时出现。首先满足 3 点：</p>
+<ol>
+<li>从数据库会存储主数据库的运行 ID</li>
+<li>在复制同步阶段，主数据库每将一个命令传送给从数据库时，都会同时把该命令存放到一个积压队列（backlog）中，并记录下当前积压队列中存放的命令的偏移量范围。</li>
+<li>从数据库接收到主数据库传来的命令时，会记录下该命令的偏移量。</li>
+</ol>
+<p>主数据库收到 PSYNC 命令后，会执行以下判断来决定此次重连是否可以执行增量复制。</p>
+<ol>
+<li>主数据库会判断从数据库传送来的运行 ID 是否和自己的运行 ID 相同。判断是否已经连过，有过数据。</li>
+<li>判断从数据库最后同步成功的命令偏移量是否在积压队列中，如果在则可以执行增量复制，并将积压队列中相应的命令发送给从数据库。</li>
+<li>不符合要求就执行全量复制。</li>
+</ol>
+<h3 id="2-哨兵模式"><a class="markdownIt-Anchor" href="#2-哨兵模式">#</a> 2、哨兵模式</h3>
+<p>主从复制模式虽然满足了读写分离以及数据的备份，但是宕机了还是需要人工恢复，无法满足要求。哨兵模式就可以自动实现恢复。</p>
+<p>所谓哨兵，其实就是另一个节点，这个节点不用来存储数据，而是定时向主从节点发送信号，等待节点回复。如果一段时间后没有收到节点的回复，就表示那个节点宕机了，这时哨兵们会发起一个随机投票，从这个主节点的从节点里选出一个从节点配制成主节点。</p>
+<p><strong>和主数据库的连接建立完成后，哨兵会定时执行下面 3 个操作。</strong></p>
+<ol>
+<li><strong>每 10 秒哨兵会向主数据库和从数据库发送 INFO 命令。</strong></li>
+<li><strong>每 2 秒哨兵会向主数据库和从数据库的 sentinel:hello 频道发送自己的信息。</strong></li>
+<li><strong>每 1 秒哨兵会向主数据库、从数据库和其他哨兵节点发送 PING 命令。</strong></li>
+</ol>
+<p>发送 INFO 命令使得哨兵可以获得当前数据库的相关信息（包括运行 ID、复制信息等）从而实现新节点的自动发现。所以配置时只需要配置哨兵连接到主节点即可，哨兵会读取主节点从而连接到其从节点。</p>
+<p>之后哨兵向主从数据库的__sentinel__:hello 频道发送信息来与同样监控该数据库的哨兵分享自己的信息。发送的消息内容为：<strong>&lt;哨兵的地址&gt;, &lt; 哨兵的端口 &gt;, &lt; 哨兵的运行 ID&gt;, &lt; 哨兵的配臵版本 &gt;, &lt; 主数据库的名字 &gt;, &lt; 主数据库的地址 &gt;, &lt; 主数据库的端口 &gt;, &lt; 主数据库的配臵版本 &gt;</strong></p>
+<p>是通过每隔一定时间向这些节点发送 PING 命令，定时监控这些数据库和节点有没有停止服务。</p>
+<h3 id="3-集群模式"><a class="markdownIt-Anchor" href="#3-集群模式">#</a> 3、集群模式</h3>
+<p>哨兵模式下，每个数据库依然存有集群中的所有数据，从而导致集群的总数据存储量受限于可用存储内存最小的数据库节点，形成木桶效应。</p>
+<p><strong>数据分片：</strong></p>
+<p>一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个， 集群使用公式 CRC16 (key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16 (key) 语句用于计算键 key 的 CRC16 校验和 。</p>
+<p><strong>节点加入到集群与删除节点</strong>：</p>
+<p>如果用户将新节点 D 添加到集群中， 那么集群只需要将节点 A 、B 、 C 中的某些槽移动到节点 D 就可以了。</p>
+<p>如果用户要从集群中移除节点 A ， 那么集群只需要将节点 A 中的所有哈希槽移动到节点 B 和节点 C ， 然后再移除空白（不包含任何哈希槽）的节点 A 就可以了。</p>
+<p>为什么设置 16384 个槽：</p>
+<p>1、数据包大小：集群是使用 bitmap 表示某个槽里有数据的，计算 bitmap 的大小：65535 / 8 (8bit/byte)/1024 (1k)=7.99 Kbytes，而 16384 只有 2k，节省流量。</p>
+<p>2、一般集群里不会出现太多的主节点，16384 个槽够用。</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-02-06 17:07:37" itemprop="dateModified" datetime="2023-02-06T17:07:37+08:00">2023-02-06</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" title="Redis的高可用方案">http://example.com/2023/02/06/Redis的高可用方案/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tse2-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.G9t_kpuJsjzDRoGY6jd9nAHaDK?w&#x3D;323&amp;h&#x3D;149&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="Redis的两种持久化方案">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Redis</span>
+  <h3>Redis的两种持久化方案</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tse1-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.1W-Ztos_3FNhFR53DJPlSwHaEK?w&#x3D;317&amp;h&#x3D;180&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="缓存一致性问题">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Redis</span>
+  <h3>缓存一致性问题</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text"> Redis 的高可用方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 1、主从复制：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 2、哨兵模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 3、集群模式</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="bookmark" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></li><li><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" rel="bookmark" title="Redis的两种持久化方案">Redis的两种持久化方案</a></li><li class="active"><a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" rel="bookmark" title="Redis的高可用方案">Redis的高可用方案</a></li><li><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" rel="bookmark" title="缓存一致性问题">缓存一致性问题</a></li><li><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" rel="bookmark" title="缓存穿透等问题">缓存穿透等问题</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" title="HttpClient交互">HttpClient交互</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="In C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="GC垃圾回收">GC垃圾回收</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="In Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" title="缓存穿透等问题">缓存穿透等问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/06/Quartz%E5%90%8E%E5%8F%B0%E5%A4%84%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1/" title="Quartz后台处理的任务">Quartz后台处理的任务</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="In C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" title="依赖注入">依赖注入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="In C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">属性双向绑定</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Welcom To Study !</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/02/06/Redis的高可用方案/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

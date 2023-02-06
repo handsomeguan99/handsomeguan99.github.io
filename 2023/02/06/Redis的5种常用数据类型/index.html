@@ -1,0 +1,544 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+
+
+  <title>
+Redis的5种常用数据类型 - Redis |
+Welcom To Study ! = Hexo</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Redis的5种常用数据类型
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-02-06 16:29:05">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T16:29:05+08:00">2023-02-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Welcom To Study !</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.bJXd7xcXXN3ZetcseE7yRQHaDo?w=326&h=171&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Redis/" itemprop="item" rel="index" title="In Redis"><span itemprop="name">Redis</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="redis的5中常用数据类型"><a class="markdownIt-Anchor" href="#redis的5中常用数据类型">#</a> Redis 的 5 中常用数据类型</h1>
+<h3 id="string型"><a class="markdownIt-Anchor" href="#string型">#</a> string 型</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">set k v</span><br><span class="line">get k </span><br><span class="line">INCRBY k increment   			返回k+increment</span><br><span class="line">INCR K							返回k + 1</span><br><span class="line">DECRBY k increment				返回k-increment</span><br><span class="line">DECR K							返回k - 1</span><br><span class="line">APPEND key value				向键值的末尾追加value。如果键不存在则将该键的值设置为value</span><br><span class="line">STRLEN key						获取key的值的长度</span><br><span class="line">MSET key1 v1 key2 v2 key 3 v3	同时设置很多key与val</span><br><span class="line">SETNX key value					设置key和val，key存在执行失败</span><br><span class="line">SETEX key seconds value			设置key，并且加上过期时间</span><br><span class="line">SET K V EX seconds NX			设置key,val；并加上过期时间，NX表示不存在key设置才能成功</span><br></pre></td></tr></table></figure>
+<p>底层使用的是简单动态字符串</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    T length;		<span class="comment">//字符串长度</span></span><br><span class="line">    T capacity;		<span class="comment">//数组容量</span></span><br><span class="line">    byte[] content;	<span class="comment">//存储字符串的字节数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当字符串长度小于 1M 时，扩容都是加倍现有的空间。</li>
+<li>超过 1M，扩容时一次只会多扩 1M 的空间</li>
+<li>字符串最大长度为 512M</li>
+</ul>
+<h3 id="hash型"><a class="markdownIt-Anchor" href="#hash型">#</a> Hash 型</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HSET Key field value			设置&#123;key:&#123;field:val&#125;&#125;</span><br><span class="line">HGET key field					获取值</span><br><span class="line">HMSET K1 f1 v1 k2 f2 v2			多次设置值</span><br><span class="line">HMGET K1 f1 k2 f2				一次获取多个值</span><br><span class="line">HGETALL k						获取k所有field和value</span><br><span class="line">HEXISTS key field				判断key的filed是否存在</span><br><span class="line">HDEL key field 					删除key的field</span><br><span class="line">HKEYS key						只获取key的所有字段名字</span><br><span class="line">HVALS key						只获取key的所有字段的值</span><br><span class="line">HLEN key						获取key中字段的数量</span><br></pre></td></tr></table></figure>
+<p>底层数据结构：redis 的哈希对象的底层存储可以使用 ziplist（压缩列表）和 hashtable。</p>
+<p>使用 ziplist（压缩列表）的条件：</p>
+<ul>
+<li>哈希对象保存的所有键值对的键和值的字符串长度都小于 64 字节</li>
+<li>哈希对象保存的键值对数量小于 512 个</li>
+</ul>
+<p>使用 hashtable：使用挂链方式解决哈希碰撞问题</p>
+<h3 id="list型"><a class="markdownIt-Anchor" href="#list型">#</a> List 型</h3>
+<p>存储一个有序的字符串列表。常用的操作是向列表两端添加元素，或者获得列表的某一个片段。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">LPUSH key value [value …]		链表左边插入key和val</span><br><span class="line">RPUSH key value [value …]		链表右边插入key和val</span><br><span class="line">LPOP key						链表左端弹出key</span><br><span class="line">RPOP key						链表右端弹出key</span><br><span class="line">LLEN key						获取链表长度。空链表返回0</span><br><span class="line">LRANGE key start stop			获取链表中的一段。包括start和stop。stop过大就返回到最右边</span><br><span class="line">LRANGE key 0 -1					获取链表所有key</span><br><span class="line">LRANGE key -2 -1				从右边开始获取key</span><br><span class="line">LREM key count value			删除列表中前count个值为value的元素，返回值是实际删除的元素个数</span><br><span class="line">								count=0会删除所有值为value的元素</span><br><span class="line">LINDEX key index				获取指定key中，第index位置的值。</span><br><span class="line">LSET key index value			设置key中第index位置的值</span><br><span class="line">LTRIM key start end				保留从start到end位置的值，其他的都删除</span><br><span class="line">LINSERT k BEFORE|AFTER pivot v	先从左到右查找值为 pivot 的元素，在其 前|后 插入value</span><br><span class="line">RPOPLPUSH source destination	先从source右边弹出一个元素，然后将其加入到des列表类型键的左边，并返回									这个元素的值</span><br></pre></td></tr></table></figure>
+<p>底层结构：双向链表</p>
+<h3 id="set型"><a class="markdownIt-Anchor" href="#set型">#</a> Set 型</h3>
+<p>集合中的每个元素都是不同的，且没有顺序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SADD key member [member …]		插入key。已存在就忽略</span><br><span class="line">SREM key member [member …]		删除key</span><br><span class="line">SMEMBERS key					获取所有key的值</span><br><span class="line">SISMEMBER key member			查看member在不在集合里</span><br><span class="line">SDIFF key [key „]				看key1和key2中的差集</span><br><span class="line">SINTER key [key „]				看key1和key2的交集</span><br><span class="line">SUNION key [key „]				看key1和key2的并集</span><br><span class="line">SCARD key						获取key中元素数量</span><br><span class="line">SDIFFSTORE des key [key …]		看key1和key2中的差集.存在des里</span><br><span class="line">SINTERSTORE des key [key …]		看key1和key2的交集.存在des里</span><br><span class="line">SUNIONSTORE des key [key …]		看key1和key2的并集.存在des里</span><br><span class="line">SRANDMEMBER key [count]			随机获取key中的值。count表示一次多少个。正表示不可重复，负可重复</span><br><span class="line">SPOP key						随机弹出一个元素并删除</span><br></pre></td></tr></table></figure>
+<p>底层结构：使用了 intset 和 hashtable 两种数据结构存储的，intset 我们可以理解为数组，hashtable 就是普通的哈希表</p>
+<p>set 的底层存储 intset 和 hashtable 是存在编码转换的，使用<strong> intset</strong> 存储必须满足下面两个条件，否则使用 hashtable，条件如下：</p>
+<ul>
+<li>集合对象保存的所有元素都是整数值</li>
+<li>集合对象保存的元素数量不超过 512 个</li>
+</ul>
+<h3 id="zset型"><a class="markdownIt-Anchor" href="#zset型">#</a> ZSet 型</h3>
+<p>集合中的每个元素都是不同的，且有序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ZADD key score member 				加入一个元素和该元素的分数,member存在的话替换掉分数</span><br><span class="line">ZSCORE key member					获取key中member的分数</span><br><span class="line">ZRANGE key start stop [WITHSCORES]	获取一段zset，withscores可以同时返回分数</span><br><span class="line"></span><br><span class="line">ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count] 获取key中分数在min到max之间的元素</span><br><span class="line">ZRANGEBYSCORE scoreboard 80 (100	如果希望分数范围不包含端点值，在分数前加上“(”符号。这里100不要</span><br><span class="line">ZRANGEBYSCORE scoreboard 80 +inf	min和max可以是无穷大。-inf和+inf分别表示负无穷和正无穷</span><br><span class="line">ZRANGEBYSCORE scoreboard 60 +inf LIMIT 1 3	表示选择第一个到第三个的元素。元素从0开始</span><br><span class="line"></span><br><span class="line">ZCARD key							获取key的所有元素</span><br><span class="line">ZCOUNT key min max					计算分数在min到max之间的元素个数</span><br><span class="line">ZREM key member [member …]			删除元素</span><br><span class="line">ZREMRANGEBYRANK key start stop		按分数排序后，删除start-end的元素，返回删了多少个</span><br><span class="line">ZRANK key member					按分数排序后，获取member所在的索引</span><br></pre></td></tr></table></figure>
+<p>底层结构：跳表和 hashmap</p>
+<h2 id="redis-ziplist压缩列表数据结构"><a class="markdownIt-Anchor" href="#redis-ziplist压缩列表数据结构">#</a> redis ziplist 压缩列表数据结构</h2>
+<p>ziplist 的数据结构主要包括两层，ziplist 和 zipEntry。</p>
+<p><img data-src="https://hunter-image.oss-cn-beijing.aliyuncs.com/redis/ziplist/Redis%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8%E7%BB%93%E6%9E%84.png" alt="img"></p>
+<h2 id="redis中跳表数据结构"><a class="markdownIt-Anchor" href="#redis中跳表数据结构">#</a> redis 中跳表数据结构</h2>
+<p><img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/034f82a2234c4bf895ece591ed304c2d~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.image" alt="在这里插入图片描述"></p>
+<h3 id="跳表的插入"><a class="markdownIt-Anchor" href="#跳表的插入">#</a> 跳表的插入</h3>
+<p>先根据投硬币的方式，决定这个元素要占据的层数。假设是 2。那么就在最底下两层的链表里插入这个元素</p>
+<h3 id="跳表的删除"><a class="markdownIt-Anchor" href="#跳表的删除">#</a> 跳表的删除</h3>
+<p>找到各层中包含元素 x 的节点。使用标准的链表删除元素的方法删除即可。</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-02-06 16:36:31" itemprop="dateModified" datetime="2023-02-06T16:36:31+08:00">2023-02-06</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="Redis的5种常用数据类型">http://example.com/2023/02/06/Redis的5种常用数据类型/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tse1-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.96f91d3xJZ21llZ84hc9PgHaEL?w&#x3D;317&amp;h&#x3D;180&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="常用的几种设计模式">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 设计模式</span>
+  <h3>常用的几种设计模式</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tse2-mm.cn.bing.net&#x2F;th&#x2F;id&#x2F;OIP-C.G9t_kpuJsjzDRoGY6jd9nAHaDK?w&#x3D;323&amp;h&#x3D;149&amp;c&#x3D;7&amp;r&#x3D;0&amp;o&#x3D;5&amp;dpr&#x3D;1.3&amp;pid&#x3D;1.7" title="Redis的两种持久化方案">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Redis</span>
+  <h3>Redis的两种持久化方案</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis%E7%9A%845%E4%B8%AD%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> Redis 的 5 中常用数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string%E5%9E%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text"> string 型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash%E5%9E%8B"><span class="toc-number">1.0.2.</span> <span class="toc-text"> Hash 型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list%E5%9E%8B"><span class="toc-number">1.0.3.</span> <span class="toc-text"> List 型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set%E5%9E%8B"><span class="toc-number">1.0.4.</span> <span class="toc-text"> Set 型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zset%E5%9E%8B"><span class="toc-number">1.0.5.</span> <span class="toc-text"> ZSet 型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis-ziplist%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text"> redis ziplist 压缩列表数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E4%B8%AD%E8%B7%B3%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text"> redis 中跳表数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 跳表的插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 跳表的删除</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="bookmark" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></li><li><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" rel="bookmark" title="Redis的两种持久化方案">Redis的两种持久化方案</a></li><li><a href="/2023/02/06/Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88/" rel="bookmark" title="Redis的高可用方案">Redis的高可用方案</a></li><li><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" rel="bookmark" title="缓存一致性问题">缓存一致性问题</a></li><li><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" rel="bookmark" title="缓存穿透等问题">缓存穿透等问题</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/FluentValidation%E9%AA%8C%E8%AF%81/" title="FluentValidation验证">FluentValidation验证</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/AOP%E4%BD%BF%E7%94%A8/" title="AOP使用">AOP使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="In Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/06/Redis%E7%9A%845%E7%A7%8D%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="Redis的5种常用数据类型">Redis的5种常用数据类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">Sql中的索引</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="In Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" title="缓存穿透等问题">缓存穿透等问题</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Welcom To Study !</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/02/06/Redis的5种常用数据类型/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
