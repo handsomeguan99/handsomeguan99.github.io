@@ -62,11 +62,11 @@ Welcom To Study ! = Hexo</title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2023-02-06 11:06:42">
+  <span class="item" title="作成日：2023-02-06 11:06:42">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <span class="text">Posted on</span>
+    <span class="text">投稿日</span>
     <time itemprop="dateCreated datePublished" datetime="2023-02-06T11:06:42+08:00">2023-02-06</time>
   </span>
 </div>
@@ -77,7 +77,7 @@ Welcom To Study ! = Hexo</title>
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="Toggle navigation bar">
+      <div class="lines" aria-label="ナビゲーションバーの切り替え">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -123,8 +123,8 @@ Welcom To Study ! = Hexo</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/C/" itemprop="item" rel="index" title="In C#"><span itemprop="name">C#</span></a>
+<span><a href="/">ホーム</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/C/" itemprop="item" rel="index" title="カテゴリ C#"><span itemprop="name">C#</span></a>
 <meta itemprop="position" content="1" /></span>
 </div>
 
@@ -151,6 +151,18 @@ Welcom To Study ! = Hexo</title>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ModelView</span> : <span class="title">ViewModelBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> code;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; name = <span class="keyword">value</span>; OnPropertyChanged(<span class="string">&quot;Name&quot;</span>); &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Code</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> code; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; code = <span class="keyword">value</span>; OnPropertyChanged(<span class="string">&quot;Code&quot;</span>); &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3、WPF 中使用 Binding 就可以绑定到界面，但是 winform 需要使用下面的代码绑定属性到页面的控件</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label.DataBindings.Add(<span class="string">&quot;Text&quot;</span>, modelView, <span class="string">&quot;Name&quot;</span>); <span class="comment">//绑定label的Text属性到modelView的Name属性</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用propertychangedfody代替原始绑定"><a class="markdownIt-Anchor" href="#使用propertychangedfody代替原始绑定">#</a> 使用 PropertyChanged.Fody 代替原始绑定</h2>
+<p>原始绑定方法在属性很多的情况下需要编写的重复代码很多，容易失误写错。</p>
+<p>1、nuget 安装 PropertyChanged.Fody</p>
+<p>2、新建一个 xml 文件，代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Weavers</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">PropertyChanged</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Weavers</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>3、所有实现了 INotifyPropertyChanged 接口都会自动绑定</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ViewModelBase</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler? PropertyChanged;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">OnPropertyChanged</span>(<span class="params"><span class="built_in">string</span> propertyName</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.PropertyChanged?.Invoke(<span class="keyword">this</span>, <span class="keyword">new</span> PropertyChangedEventArgs(propertyName));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ModelView</span> : <span class="title">ViewModelBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> code;</span><br><span class="line">    <span class="comment">//不需要写OnPropertyChanged(&quot;Name&quot;);OnPropertyChanged(&quot;Code&quot;);</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; name = <span class="keyword">value</span>;  &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Code</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> code; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; code = <span class="keyword">value</span>;  &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、一些附加的特性</p>
+<p>AlsoNotifyForAttribute（属性 A 变化的时候也通知属性 B）</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">AlsoNotifyFor(<span class="string">&quot;FullName&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> GivenName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">AlsoNotifyFor(<span class="string">&quot;FullName&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FamilyName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler PropertyChanged;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FullName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>DependsOnAttribute (这个属性根据其他属性变化而变化)</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> GivenName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FamilyName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler PropertyChanged;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">DependsOn(<span class="string">&quot;GivenName&quot;</span>,<span class="string">&quot;FamilyName&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FullName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </div>
 
@@ -161,20 +173,20 @@ Welcom To Study ! = Hexo</title>
     <span class="icon">
       <i class="ic i-calendar-check"></i>
     </span>
-    <span class="text">Edited on</span>
-    <time title="Modified: 2023-02-06 14:28:03" itemprop="dateModified" datetime="2023-02-06T14:28:03+08:00">2023-02-06</time>
+    <span class="text">編集日</span>
+    <time title="修正日：2023-02-06 15:00:52" itemprop="dateModified" datetime="2023-02-06T15:00:52+08:00">2023-02-06</time>
   </span>
 </div>
 
       
 <div class="reward">
-  <button><i class="ic i-heartbeat"></i> Donate</button>
-  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <button><i class="ic i-heartbeat"></i> 寄付</button>
+  <p>*~(￣▽￣)~[お茶]を一杯ください</p>
   <div id="qr">
       
       <div>
-        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
-        <p>WeChat Pay</p>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat 支払う">
+        <p>WeChat 支払う</p>
       </div>
       
       <div>
@@ -194,14 +206,14 @@ Welcom To Study ! = Hexo</title>
 <div id="copyright">
 <ul>
   <li class="author">
-    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+    <strong>著者： </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
   </li>
   <li class="link">
-    <strong>Post link: </strong>
+    <strong>記事へのリンク：</strong>
     <a href="http://example.com/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">http://example.com/2023/02/06/属性双向绑定/</a>
   </li>
   <li class="license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
   </li>
 </ul>
 </div>
@@ -218,7 +230,7 @@ Welcom To Study ! = Hexo</title>
       
 
   <a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;images7.alphacoders.com&#x2F;737&#x2F;thumbbig-737487.webp" title="反射的使用">
-  <span class="type">Previous Post</span>
+  <span class="type">前の記事</span>
   <span class="category"><i class="ic i-flag"></i> C#</span>
   <h3>反射的使用</h3>
   </a>
@@ -240,15 +252,15 @@ Welcom To Study ! = Hexo</title>
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text"> 属性双向绑定</span></a></li></ol>
+      <div class="contents panel pjax" data-title="見出し">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text"> 属性双向绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8propertychangedfody%E4%BB%A3%E6%9B%BF%E5%8E%9F%E5%A7%8B%E7%BB%91%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text"> 使用 PropertyChanged.Fody 代替原始绑定</span></a></li></ol></li></ol>
       </div>
-      <div class="related panel pjax" data-title="Related">
+      <div class="related panel pjax" data-title="関連記事">
         <ul>
           <li><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="bookmark" title="GC垃圾回收">GC垃圾回收</a></li><li><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="bookmark" title="反射的使用">反射的使用</a></li><li class="active"><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" rel="bookmark" title="属性双向绑定">属性双向绑定</a></li>
         </ul>
       </div>
-      <div class="overview panel" data-title="Overview">
+      <div class="overview panel" data-title="概要">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="John Doe"
       data-src="/images/avatar.jpg">
@@ -260,13 +272,13 @@ Welcom To Study ! = Hexo</title>
     <div class="item posts">
       <a href="/archives/">
         <span class="count">16</span>
-        <span class="name">posts</span>
+        <span class="name">ポスト</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
         <span class="count">2</span>
-        <span class="name">categories</span>
+        <span class="name">カテゴリ</span>
       </a>
     </div>
 </nav>
@@ -278,27 +290,27 @@ Welcom To Study ! = Hexo</title>
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
   </li>
 
         
   <li class="item dropdown">
-      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>投稿</a>
     <ul class="submenu">
 
         
   <li class="item">
-    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a>
   </li>
 
         
   <li class="item">
-    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a>
   </li>
 
         
   <li class="item">
-    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a>
   </li>
 
   </ul>
@@ -330,53 +342,13 @@ Welcom To Study ! = Hexo</title>
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>Random Posts</h2>
+  <h2>ランダムな記事</h2>
   <ul>
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/C/" title="In C#">C#</a>
-</div>
-
-    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/C/" title="In C#">C#</a>
-</div>
-
-    <span><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="GC垃圾回收">GC垃圾回收</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
     <span><a href="/2023/02/03/MediatR%E4%BD%BF%E7%94%A8/" title="MediatR使用">MediatR使用</a></span>
@@ -386,17 +358,17 @@ Welcom To Study ! = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/C/" title="カテゴリ C#">C#</a>
 </div>
 
-    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+    <span><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">属性双向绑定</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
     <span><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" title="HttpClient交互">HttpClient交互</a></span>
@@ -406,7 +378,37 @@ Welcom To Study ! = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/02/NET%E7%AE%A1%E9%81%93%E6%A8%A1%E5%9E%8B/" title=".NET管道模型">.NET管道模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
     <span><a href="/2023/02/03/NLOG/" title="NLOG">NLOG</a></span>
@@ -416,26 +418,36 @@ Welcom To Study ! = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/03/FluentValidation%E9%AA%8C%E8%AF%81/" title="FluentValidation验证">FluentValidation验证</a></span>
+    <span><a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" title="配置文件使用">配置文件使用</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/C/" title="カテゴリ C#">C#</a>
 </div>
 
-    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
   </li>
 
   </ul>
 </div>
 <div>
-  <h2>Recent Comments</h2>
+  <h2>最近のコメント</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -462,16 +474,16 @@ Welcom To Study ! = Hexo</title>
   var LOCAL = {
     path: '2023/02/06/属性双向绑定/',
     favicon: {
-      show: "（●´3｀●）Goooood",
-      hide: "(´Д｀)Booooom"
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
     },
     search : {
-      placeholder: "Search for Posts",
-      empty: "We didn't find any results for the search: ${query}",
-      stats: "${hits} results found in ${time} ms"
+      placeholder: "検索…",
+      empty: "「 ${query} 」については何も見つかりませんでした",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
     },
     valine: true,fancybox: true,
-    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
     ignores : [
       function(uri) {
         return uri.includes('#');
