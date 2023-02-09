@@ -30,7 +30,7 @@
 
 
   <title>
-Dapper.Contrib更优雅的使用Dapper |
+Dapper.Contrib更优雅的使用Dapper - ORM |
 Welcom To Study ! = Hexo</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -123,7 +123,9 @@ Welcom To Study ! = Hexo</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">ホーム</a></span>
+<span><a href="/">ホーム</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/ORM/" itemprop="item" rel="index" title="カテゴリ ORM"><span itemprop="name">ORM</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
@@ -164,7 +166,7 @@ Welcom To Study ! = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">編集日</span>
-    <time title="修正日：2023-02-09 15:51:53" itemprop="dateModified" datetime="2023-02-09T15:51:53+08:00">2023-02-09</time>
+    <time title="修正日：2023-02-09 16:02:03" itemprop="dateModified" datetime="2023-02-09T16:02:03+08:00">2023-02-09</time>
   </span>
 </div>
 
@@ -221,7 +223,7 @@ Welcom To Study ! = Hexo</title>
 
   <a href="/2023/02/09/Dapper%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;ts1.cn.mm.bing.net&#x2F;th?id&#x3D;OIP-C.qdw31XmD7TCC8kM_ZQ02iAHaKf&amp;w&#x3D;210&amp;h&#x3D;297&amp;c&#x3D;8&amp;rs&#x3D;1&amp;qlt&#x3D;90&amp;o&#x3D;6&amp;dpr&#x3D;1.3&amp;pid&#x3D;3.1&amp;rm&#x3D;2" title="Dapper的简单实用">
   <span class="type">前の記事</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> ORM</span>
   <h3>Dapper的简单实用</h3>
   </a>
 
@@ -246,6 +248,9 @@ Welcom To Study ! = Hexo</title>
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dappercontrib%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8dapper"><span class="toc-number">1.</span> <span class="toc-text"> Dapper.Contrib 更优雅的使用 Dapper</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-nuget%E5%8C%85dappercontrib"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、nuget 包 Dapper.Contrib</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B9%9F%E6%98%AFdata-first%E6%89%80%E4%BB%A5%E8%BF%98%E6%98%AF%E8%A6%81%E5%85%88%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、也是 Data first，所以还是要先配置数据库。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%87%8C%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%94%BE%E5%9C%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%87%8C"><span class="toc-number">1.3.</span> <span class="toc-text"> 3、配置文件里配置连接字符串，也可以放在环境变量里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%93%E5%82%A8%E5%B1%82"><span class="toc-number">1.4.</span> <span class="toc-text"> 4、仓储层</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="関連記事">
+        <ul>
+          <li><a href="/2023/02/09/Dapper%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8/" rel="bookmark" title="Dapper的简单实用">Dapper的简单实用</a></li><li class="active"><a href="/2023/02/09/Dapper-Contrib%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8Dapper/" rel="bookmark" title="Dapper.Contrib更优雅的使用Dapper">Dapper.Contrib更优雅的使用Dapper</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="概要">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -264,7 +269,7 @@ Welcom To Study ! = Hexo</title>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">5</span>
+        <span class="count">6</span>
         <span class="name">カテゴリ</span>
       </a>
     </div>
@@ -335,6 +340,16 @@ Welcom To Study ! = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/C/" title="カテゴリ C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">属性双向绑定</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
@@ -348,7 +363,17 @@ Welcom To Study ! = Hexo</title>
 <a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+    <span><a href="/2023/02/03/AOP%E4%BD%BF%E7%94%A8/" title="AOP使用">AOP使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="カテゴリ Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" title="Redis的两种持久化方案">Redis的两种持久化方案</a></span>
   </li>
 
       
@@ -358,37 +383,7 @@ Welcom To Study ! = Hexo</title>
 <a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/03/MediatR%E4%BD%BF%E7%94%A8/" title="MediatR使用">MediatR使用</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
-</div>
-
-    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
-</div>
-
-    <span><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">Sql中的索引</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/C/" title="カテゴリ C#">C#</a>
-</div>
-
-    <span><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="GC垃圾回收">GC垃圾回收</a></span>
+    <span><a href="/2023/02/03/HttpClient%E4%BA%A4%E4%BA%92/" title="HttpClient交互">HttpClient交互</a></span>
   </li>
 
       
@@ -405,30 +400,40 @@ Welcom To Study ! = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/FluentValidation%E9%AA%8C%E8%AF%81/" title="FluentValidation验证">FluentValidation验证</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" title="事务与锁">事务与锁</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/C/" title="カテゴリ C#">C#</a>
 </div>
 
-    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
+    <span><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="GC垃圾回收">GC垃圾回收</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="カテゴリ 设计模式">设计模式</a>
 </div>
 
-    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/03/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" title="依赖注入">依赖注入</a></span>
+    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
   </li>
 
   </ul>
