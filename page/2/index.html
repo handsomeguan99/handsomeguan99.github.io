@@ -65,7 +65,7 @@
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="Toggle navigation bar">
+      <div class="lines" aria-label="ナビゲーションバーの切り替え">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,12 +119,78 @@
         
 <article class="item">
   <div class="cover">
+    <a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url" title="SQL基本使用"><img data-src="https://images8.alphacoders.com/765/thumbbig-765058.webp"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="作成日：2023-02-06 15:04:23">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T15:04:23+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url" title="SQL基本使用">SQL基本使用</a></h3>
+    <div class="excerpt">
+        # SQLServer 的基本使用
+# 三大范式
+1、每个单元格里只有一个单独的数据，不能把数据杂揉到一起存入。比如加个 &amp;quot;,&amp;quot; 隔开
+2、所有属性都只依赖主键，比如有个属性和主键无关 (产品与订单，订单号作主键)，产品和订单号无关，产品不是先创建订单才存在。此时就要把产品分割出去做新表。
+3、传递依赖。属性 A 能决定属性 B，属性 B 又能决定属性 C，这就是传递依赖。为了便于管理，可以把这 3 个属性拆为两个表，A 决定 B 一张，B 决定 C 一张。
+实际情况下可以为了性能做数据冗余。不拆分数据到两张表，一般在违反范式的数据较少的情况。
+#...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/SqlServer/" itemprop="url" title="SqlServer"><i class="ic i-flag"></i>SqlServer</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url" title="SQL基本使用" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" itemprop="url" title="属性双向绑定"><img data-src="https://images8.alphacoders.com/736/thumbbig-736459.webp"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="作成日：2023-02-06 11:06:42">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-06T11:06:42+08:00">2023-02-06</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" itemprop="url" title="属性双向绑定">属性双向绑定</a></h3>
+    <div class="excerpt">
+        # 属性双向绑定
+1、Model 类需要继承 INotifyPropertyChanged
+123456789public class ViewModelBase : INotifyPropertyChanged&amp;#123; public event PropertyChangedEventHandler? PropertyChanged; protected virtual void OnPropertyChanged(string propertyName) &amp;#123; this.PropertyChanged?.Invoke(this, new...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/C/" itemprop="url" title="C#"><i class="ic i-flag"></i>C#</a>
+      </span>
+    </div>
+    <a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" itemprop="url" title="属性双向绑定" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
     <a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url" title="反射的使用"><img data-src="https://images7.alphacoders.com/737/thumbbig-737487.webp"></a>
   </div>
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-06 11:00:28">
+  <span class="item" title="作成日：2023-02-06 11:00:28">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -153,7 +219,7 @@
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-06 10:54:52">
+  <span class="item" title="作成日：2023-02-06 10:54:52">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -183,7 +249,7 @@
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-06 09:57:35">
+  <span class="item" title="作成日：2023-02-06 09:57:35">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -224,7 +290,7 @@ negut 包 [Quartz]
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-06 09:33:42">
+  <span class="item" title="作成日：2023-02-06 09:33:42">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -262,7 +328,7 @@ services.AddHostedService(); 注入服务
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-03 17:38:30">
+  <span class="item" title="作成日：2023-02-03 17:38:30">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -294,7 +360,7 @@ HttpClient 提供的一些 API
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-03 16:44:51">
+  <span class="item" title="作成日：2023-02-03 16:44:51">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -326,7 +392,7 @@ HttpClient 提供的一些 API
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-03 16:44:22">
+  <span class="item" title="作成日：2023-02-03 16:44:22">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -358,7 +424,7 @@ Program.cs 中调用 AddMediatR ()
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="Created: 2023-02-03 16:43:40">
+  <span class="item" title="作成日：2023-02-03 16:43:40">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
@@ -383,74 +449,6 @@ Program.cs 中调用 AddMediatR ()
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" itemprop="url" title="配置文件使用"><img data-src="https://tse2-mm.cn.bing.net/th/id/OIP-C.EtNfgCQQnF4zpY9MKIKsmwHaLH?w=182&h=273&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-03 15:55:53">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-03T15:55:53+08:00">2023-02-03</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" itemprop="url" title="配置文件使用">配置文件使用</a></h3>
-    <div class="excerpt">
-        # 配置文件存储数据
-# 1	使用用户的环境变量来存储常量文件，保密性好
-Environment.GetEnvironmentVariable (“环境变量里的 key”);
-环境变量里需要配置
-例如:
-12WINDIR: //系统目录 - C:\WINDOWSEnvironment.GetEnvironmentVariable(&amp;quot;WINDIR&amp;quot;);//可以拿到C:\WINDOWS
-# 2	原始方法读取配置。winform 可以使用
-安装 Microsoft.Extensions.Configuration 和...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/NET-CORE/" itemprop="url" title=".NET CORE"><i class="ic i-flag"></i>.NET CORE</a>
-      </span>
-    </div>
-    <a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" itemprop="url" title="配置文件使用" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/02/03/NLOG/" itemprop="url" title="NLOG"><img data-src="https://img-qn-5.51miz.com/preview/element/00/01/28/70/E-1287083-43FAAA8B.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fh/320"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-02-03 15:12:18">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-02-03T15:12:18+08:00">2023-02-03</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/02/03/NLOG/" itemprop="url" title="NLOG">NLOG</a></h3>
-    <div class="excerpt">
-        # C# 使用 NLog 记录日志
-# 1、安装 nuget 包，NLog，并且在项目文件夹下新建文件 NLog.config.
-配置文件里常用的一些属性配置：
-12345678910111213141516171819202122232425262728293031//nlog.config文件&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot; ?&amp;gt; &amp;lt;nlog...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/NET-CORE/" itemprop="url" title=".NET CORE"><i class="ic i-flag"></i>.NET CORE</a>
-      </span>
-    </div>
-    <a href="/2023/02/03/NLOG/" itemprop="url" title="NLOG" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -458,7 +456,7 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/"><i class="ic i-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="ic i-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="ic i-angle-left" aria-label="前のページ"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="ic i-angle-right" aria-label="次のページ"></i></a>
     </div>
   </nav>
 
@@ -471,11 +469,11 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="Contents">
+      <div class="contents panel pjax" data-title="見出し">
       </div>
-      <div class="related panel pjax" data-title="Related">
+      <div class="related panel pjax" data-title="関連記事">
       </div>
-      <div class="overview panel" data-title="Overview">
+      <div class="overview panel" data-title="概要">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="John Doe"
       data-src="/images/avatar.jpg">
@@ -486,14 +484,14 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">25</span>
-        <span class="name">posts</span>
+        <span class="count">27</span>
+        <span class="name">ポスト</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
         <span class="count">5</span>
-        <span class="name">categories</span>
+        <span class="name">カテゴリ</span>
       </a>
     </div>
 </nav>
@@ -505,27 +503,27 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
   </li>
 
         
   <li class="item dropdown">
-      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>投稿</a>
     <ul class="submenu">
 
         
   <li class="item">
-    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a>
   </li>
 
         
   <li class="item">
-    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a>
   </li>
 
         
   <li class="item">
-    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a>
   </li>
 
   </ul>
@@ -542,7 +540,7 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/page/3/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/page/3/" rel="next" title="次の記事"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -557,83 +555,53 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>Random Posts</h2>
+  <h2>ランダムな記事</h2>
   <ul>
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/C/" title="カテゴリ C#">C#</a>
 </div>
 
-    <span><a href="/2023/02/03/FluentValidation%E9%AA%8C%E8%AF%81/" title="FluentValidation验证">FluentValidation验证</a></span>
+    <span><a href="/2023/02/06/%E5%B1%9E%E6%80%A7%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" title="属性双向绑定">属性双向绑定</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/C/" title="In C#">C#</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
+    <span><a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" title="配置文件使用">配置文件使用</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="In 设计模式">设计模式</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/06/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="常用的几种设计模式">常用的几种设计模式</a></span>
+    <span><a href="/2023/02/03/%E8%BF%87%E6%BB%A4%E5%99%A8/" title="过滤器">过滤器</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
 </div>
 
-    <span><a href="/2023/02/03/AOP%E4%BD%BF%E7%94%A8/" title="AOP使用">AOP使用</a></span>
+    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
-</div>
-
-    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/SqlServer/" title="In SqlServer">SqlServer</a>
-</div>
-
-    <span><a href="/2023/02/06/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" title="事务与锁">事务与锁</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Redis/" title="In Redis">Redis</a>
-</div>
-
-    <span><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" title="缓存一致性问题">缓存一致性问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Redis/" title="In Redis">Redis</a>
+<a href="/categories/Redis/" title="カテゴリ Redis">Redis</a>
 </div>
 
     <span><a href="/2023/02/06/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%AD%89%E9%97%AE%E9%A2%98/" title="缓存穿透等问题">缓存穿透等问题</a></span>
@@ -643,26 +611,55 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/NET-CORE/" title="In .NET CORE">.NET CORE</a>
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
 </div>
 
-    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
+    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Redis/" title="In Redis">Redis</a>
+</div>
+
+    <span><a href="/2023/02/09/Dapper%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8/" title="Dapper的简单实用">Dapper的简单实用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/AOP%E4%BD%BF%E7%94%A8/" title="AOP使用">AOP使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Redis/" title="カテゴリ Redis">Redis</a>
 </div>
 
     <span><a href="/2023/02/06/Redis%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E6%A1%88/" title="Redis的两种持久化方案">Redis的两种持久化方案</a></span>
   </li>
 
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">Sql中的索引</a></span>
+  </li>
+
   </ul>
 </div>
 <div>
-  <h2>Recent Comments</h2>
+  <h2>最近のコメント</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -689,16 +686,16 @@ Environment.GetEnvironmentVariable (“环境变量里的 key”);
   var LOCAL = {
     path: 'page/2/',
     favicon: {
-      show: "（●´3｀●）Goooood",
-      hide: "(´Д｀)Booooom"
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
     },
     search : {
-      placeholder: "Search for Posts",
-      empty: "We didn't find any results for the search: ${query}",
-      stats: "${hits} results found in ${time} ms"
+      placeholder: "検索…",
+      empty: "「 ${query} 」については何も見つかりませんでした",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
     },
     valine: true,fancybox: true,
-    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
     ignores : [
       function(uri) {
         return uri.includes('#');

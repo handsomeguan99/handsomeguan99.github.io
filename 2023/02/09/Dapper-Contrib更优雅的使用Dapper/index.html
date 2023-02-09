@@ -1,0 +1,495 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/02/09/Dapper-Contrib%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8Dapper/">
+
+
+
+  <title>
+Dapper.Contrib更优雅的使用Dapper |
+Welcom To Study ! = Hexo</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Dapper.Contrib更优雅的使用Dapper
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="作成日：2023-02-09 15:41:41">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">投稿日</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-09T15:41:41+08:00">2023-02-09</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="ナビゲーションバーの切り替え">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Welcom To Study !</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.kUineP8W5xKF5s9WrDi3twHaEK?w=289&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">ホーム</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CH">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/09/Dapper-Contrib%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8Dapper/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="dappercontrib更优雅的使用dapper"><a class="markdownIt-Anchor" href="#dappercontrib更优雅的使用dapper">#</a> Dapper.Contrib 更优雅的使用 Dapper</h1>
+<p>对于增删改查，可以使用 Dapper.Contrib 来优化掉 sql 语句的编写</p>
+<h2 id="1-nuget包dappercontrib"><a class="markdownIt-Anchor" href="#1-nuget包dappercontrib">#</a> 1、nuget 包 Dapper.Contrib</h2>
+<h2 id="2-也是data-first所以还是要先配置数据库"><a class="markdownIt-Anchor" href="#2-也是data-first所以还是要先配置数据库">#</a> 2、也是 Data first，所以还是要先配置数据库。</h2>
+<p>创建表与对应的列</p>
+<p>.NET 项目中也需要配置一个对应的 Entity</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Table(<span class="string">&quot;dapperdemo&quot;</span>)</span>] 	<span class="comment">//这个类对应哪张表</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">demoEntity</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Key</span>] <span class="comment">//不是自动增长主键时使用ExplicitKey</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Computed</span>]				<span class="comment">//计算属性，这个属性不用映射到表</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> ComputedAge =&gt; Age * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Write(false)</span>]			<span class="comment">//类似计算属性，不映射到表</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> NoWriteCol &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-配置文件里配置连接字符串也可以放在环境变量里"><a class="markdownIt-Anchor" href="#3-配置文件里配置连接字符串也可以放在环境变量里">#</a> 3、配置文件里配置连接字符串，也可以放在环境变量里</h2>
+<p>可以根据使用的数据库类型配置不同的连接字符串，SQLserver，MYSQL 等</p>
+<h2 id="4-仓储层"><a class="markdownIt-Anchor" href="#4-仓储层">#</a> 4、仓储层</h2>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Customer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> IDbConnection Connection</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> connection = ConnectionFactory.CreateConnection();</span><br><span class="line">            connection.Open();</span><br><span class="line">            <span class="keyword">return</span> connection;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerable&lt;CustomerInfo&gt; <span class="title">GetAll</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection dbConnection = Connection)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> dbConnection.GetAll&lt;CustomerInfo&gt;();</span><br><span class="line">            <span class="comment">//return dbConnection.Query&lt;CustomerInfo&gt;(&quot;SELECT * FROM T_Customer&quot;);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CustomerInfo <span class="title">FindByID</span>(<span class="params"><span class="built_in">string</span> id</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection dbConnection = Connection)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> dbConnection.Get&lt;CustomerInfo&gt;(id);</span><br><span class="line">            <span class="comment">//string query = &quot;SELECT * FROM T_Customer WHERE ID = @Id&quot;;</span></span><br><span class="line">            <span class="comment">//return dbConnection.Query&lt;CustomerInfo&gt;(query, new &#123; Id = id &#125;).FirstOrDefault();</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Insert</span>(<span class="params">CustomerInfo info</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection dbConnection = Connection)</span><br><span class="line">        &#123;</span><br><span class="line">            result = dbConnection.Insert(info) &gt; <span class="number">0</span>;</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">//string query = &quot;INSERT INTO T_Customer (ID, Name, Age, Creator, CreateTime)&quot;</span></span><br><span class="line">            <span class="comment">//                + &quot; VALUES(@ID, @Name, @Age, @Creator, @CreateTime)&quot;;</span></span><br><span class="line">            <span class="comment">//result = dbConnection.Execute(query, info) &gt; 0;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Update</span>(<span class="params">CustomerInfo prod</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection dbConnection = Connection)</span><br><span class="line">        &#123;</span><br><span class="line">            result = dbConnection.Update(prod);</span><br><span class="line">            <span class="comment">//string query = &quot;UPDATE T_Customer SET Name = @Name,&quot;</span></span><br><span class="line">            <span class="comment">//               + &quot; Age = @Age, Creator= @Creator, CreateTime=@CreateTime&quot;</span></span><br><span class="line">            <span class="comment">//               + &quot; WHERE ID = @ID&quot;;</span></span><br><span class="line">            <span class="comment">//result = dbConnection.Execute(query, prod) &gt; 0;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Delete</span>(<span class="params"><span class="built_in">string</span> id</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection dbConnection = Connection)</span><br><span class="line">        &#123;</span><br><span class="line">            result = dbConnection.Delete(<span class="keyword">new</span> CustomerInfo &#123; ID = id &#125;);</span><br><span class="line">            <span class="comment">//string query = &quot;DELETE FROM T_Customer WHERE ID = @Id&quot;;</span></span><br><span class="line">            <span class="comment">//result = dbConnection.Execute(query, new &#123; ID = id &#125;) &gt; 0;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">DeleteAll</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> result = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection dbConnection = Connection)</span><br><span class="line">        &#123;</span><br><span class="line">            result = dbConnection.DeleteAll&lt;CustomerInfo&gt;();</span><br><span class="line">            <span class="comment">//string query = &quot;DELETE FROM T_Customer WHERE ID = @Id&quot;;</span></span><br><span class="line">            <span class="comment">//result = dbConnection.Execute(query, new &#123; ID = id &#125;) &gt; 0;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">編集日</span>
+    <time title="修正日：2023-02-09 15:51:53" itemprop="dateModified" datetime="2023-02-09T15:51:53+08:00">2023-02-09</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 寄付</button>
+  <p>*~(￣▽￣)~[お茶]を一杯ください</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat 支払う">
+        <p>WeChat 支払う</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者： </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>記事へのリンク：</strong>
+    <a href="http://example.com/2023/02/09/Dapper-Contrib%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8Dapper/" title="Dapper.Contrib更优雅的使用Dapper">http://example.com/2023/02/09/Dapper-Contrib更优雅的使用Dapper/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1jbg=="><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/02/09/Dapper%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;ts1.cn.mm.bing.net&#x2F;th?id&#x3D;OIP-C.qdw31XmD7TCC8kM_ZQ02iAHaKf&amp;w&#x3D;210&amp;h&#x3D;297&amp;c&#x3D;8&amp;rs&#x3D;1&amp;qlt&#x3D;90&amp;o&#x3D;6&amp;dpr&#x3D;1.3&amp;pid&#x3D;3.1&amp;rm&#x3D;2" title="Dapper的简单实用">
+  <span class="type">前の記事</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Dapper的简单实用</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="見出し">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dappercontrib%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8dapper"><span class="toc-number">1.</span> <span class="toc-text"> Dapper.Contrib 更优雅的使用 Dapper</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-nuget%E5%8C%85dappercontrib"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、nuget 包 Dapper.Contrib</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B9%9F%E6%98%AFdata-first%E6%89%80%E4%BB%A5%E8%BF%98%E6%98%AF%E8%A6%81%E5%85%88%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、也是 Data first，所以还是要先配置数据库。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%87%8C%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%94%BE%E5%9C%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%87%8C"><span class="toc-number">1.3.</span> <span class="toc-text"> 3、配置文件里配置连接字符串，也可以放在环境变量里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%93%E5%82%A8%E5%B1%82"><span class="toc-number">1.4.</span> <span class="toc-text"> 4、仓储层</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="関連記事">
+      </div>
+      <div class="overview panel" data-title="概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">27</span>
+        <span class="name">ポスト</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">カテゴリ</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>投稿</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>ランダムな記事</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/06/NET6%E7%9A%84%E6%89%98%E7%AE%A1%E6%96%B9%E6%B3%95/" title=".NET6的托管方法">.NET6的托管方法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E7%BC%93%E5%AD%98/" title="缓存">缓存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/MediatR%E4%BD%BF%E7%94%A8/" title="MediatR使用">MediatR使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/SQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="SQL基本使用">SQL基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SqlServer/" title="カテゴリ SqlServer">SqlServer</a>
+</div>
+
+    <span><a href="/2023/02/06/Sql%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/" title="Sql中的索引">Sql中的索引</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="カテゴリ C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="GC垃圾回收">GC垃圾回收</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8/" title="配置文件使用">配置文件使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/C/" title="カテゴリ C#">C#</a>
+</div>
+
+    <span><a href="/2023/02/06/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="反射的使用">反射的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" title="中间件技术">中间件技术</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/NET-CORE/" title="カテゴリ .NET CORE">.NET CORE</a>
+</div>
+
+    <span><a href="/2023/02/03/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" title="依赖注入">依赖注入</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最近のコメント</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Welcom To Study !</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/02/09/Dapper-Contrib更优雅的使用Dapper/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "検索…",
+      empty: "「 ${query} 」については何も見つかりませんでした",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,
+    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
